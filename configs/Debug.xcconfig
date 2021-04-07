@@ -1,0 +1,13 @@
+// Generated using xcconfig-extractor 0.5.0 by Toshihiro Suzuki - https://github.com/toshi0383/xcconfig-extractor
+#include "Base.xcconfig"
+#include "../Pods/Target Support Files/Pods-hws-ios/Pods-hws-ios.debug.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
+GCC_DYNAMIC_NO_PIC = NO
+DEBUG_INFORMATION_FORMAT = dwarf
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+ENABLE_TESTABILITY = YES
+MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE
+GCC_OPTIMIZATION_LEVEL = 0
+ONLY_ACTIVE_ARCH = YES
+

@@ -1,0 +1,15 @@
+input_dir: hws-ios/
+output_dir: hws-ios/Generated/
+xcassets:
+    inputs:
+      - Resource/Assets.xcassets
+    outputs:
+      - templateName: swift5
+        output: Assets.swift
+        
+strings:
+    inputs:
+        - Resource/Localizable.strings
+    outputs:
+        - templateName: structured-swift5
+          output: Localization.swift

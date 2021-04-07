@@ -1,0 +1,16 @@
+name: hws-ios
+fileGroups:
+  - configs
+configFiles:
+  Debug: configs/Debug.xcconfig
+  Release: configs/Release.xcconfig
+targets:
+  hws-ios:
+    type: application
+    platform: iOS
+    sources: hws-ios
+    configFiles:
+      Debug: configs/hws-ios-Debug.xcconfig
+      Release: configs/hws-ios-Release.xcconfig
+    settings:
+      CURRENT_PROJECT_VERSION: 1
