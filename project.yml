@@ -14,3 +14,18 @@ targets:
       Release: configs/hws-ios-Release.xcconfig
     settings:
       CURRENT_PROJECT_VERSION: 1
+    dependencies:
+      - package: APIKit
+      - package: RxSwift
+        product: RxCocoa
+      - package: RxSwift
+        product: RxRelay
+      - package: RxSwift
+        product: RxSwift
+packages:
+  APIKit:
+    url: https://github.com/ishkawa/APIKit
+    version: 5.1.0
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift
+    version: 6.0.0
