@@ -8,9 +8,9 @@
 import UIKit
 
 final class RootRouter: RootRouting {
-    private(set) lazy var container = RootViewController(viewModel: rootViewModel)
-    private lazy var rootViewModel = RootViewModel(dependency: .default(router: self))
     private lazy var tabRouter: TabRouting = TabRouter(rootRouter: self)
+    private lazy var rootViewModel = RootViewModel(dependency: .default(router: self))
+    private(set) lazy var container = RootViewController(viewModel: rootViewModel)
     
     func start(in window: UIWindow) {
         window.rootViewController = container

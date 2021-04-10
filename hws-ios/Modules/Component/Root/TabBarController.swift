@@ -25,7 +25,7 @@ final class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.tintColor = .white
+        tabBar.tintColor = .blue
         tabBar.barTintColor = .white
         tabBar.isTranslucent = false
     }

@@ -33,19 +33,19 @@ final class TabRouter: TabRouting, TabBarRouting {
             case .home:
                 controller.tabBarItem = UITabBarItem(
                     title: "ホーム",
-                    image: UIImage(systemName: "star"),
+                    image: UIImage(systemName: "house"),
                     tag: tab.rawValue
                 )
             case .favorite:
                 controller.tabBarItem = UITabBarItem(
                     title: "お気に入り",
-                    image: UIImage(systemName: "star"),
+                    image: UIImage(systemName: "heart"),
                     tag: tab.rawValue
                 )
             case .mypage:
                 controller.tabBarItem = UITabBarItem(
                     title: "マイページ",
-                    image: UIImage(systemName: "star"),
+                    image: UIImage(systemName: "person"),
                     tag: tab.rawValue
                 )
             }

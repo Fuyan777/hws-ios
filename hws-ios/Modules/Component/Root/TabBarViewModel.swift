@@ -18,12 +18,10 @@ class TabBarViewModel {
     }
     
     private let dependency: Dependency
-//    private let tabBarModel: TabBarModel
     private let disposeBag = DisposeBag()
     
     init(dependency: Dependency) {
         self.dependency = dependency
     }
-    
     
 }
