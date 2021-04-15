@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewModel: NSObject {
     private let model: HomeModel
-    
+
     init(model: HomeModel) {
         self.model = model
     }
@@ -17,9 +17,9 @@ class HomeViewModel: NSObject {
 
 extension HomeViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as CategoryTableViewCell
         let component = CategoryTableViewCell.Component()

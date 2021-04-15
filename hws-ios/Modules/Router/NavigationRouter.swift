@@ -10,13 +10,12 @@ import UIKit
 final class NavigationRouter: NavigationRouting {
     let container = UINavigationController()
     private weak var tabRouter: TabRouting?
-    
+
     init(tabRouter: TabRouting?) {
         self.tabRouter = tabRouter
     }
-    
+
     func select(tab: Tab) {
         tabRouter?.select(tab: tab)
     }
-    
 }

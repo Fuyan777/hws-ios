@@ -1,0 +1,11 @@
+# format options
+
+ # file options
+--exclude */modules, Pods
+
+ # rules
+--disable trailingClosures, trailingCommas
+--stripunusedargs closure-only
+
+ # version
+--swiftversion 5.1

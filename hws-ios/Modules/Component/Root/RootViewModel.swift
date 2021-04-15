@@ -11,32 +11,32 @@ import RxSwift
 class RootViewModel {
     struct Dependency {
         var router: RootRouting
-        
+
         static func `default`(router: RootRouting) -> Dependency {
             Dependency(router: router)
         }
     }
-    
+
     let showTab = PublishRelay<Void>()
-    
+
     private let dependency: Dependency
     private let model: RootModel
     private let disposeBag = DisposeBag()
-    
+
     init(dependency: Dependency) {
         self.dependency = dependency
         model = RootModel()
         bindModel()
     }
-    
+
     func setupContents() {
         model.setupContents()
     }
-    
+
     func setupTab() {
         dependency.router.resetAll()
     }
-    
+
     private func bindModel() {
         model.showTab.asObservable().subscribe(onNext: { [weak self] _ in
             self?.showTab.accept(())

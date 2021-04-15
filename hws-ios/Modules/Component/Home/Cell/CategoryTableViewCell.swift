@@ -8,7 +8,7 @@
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
-    @IBOutlet weak var collectionView: UICollectionView! {
+    @IBOutlet var collectionView: UICollectionView! {
         didSet {
             collectionView.dataSource = self
             collectionView.delegate = self
@@ -19,14 +19,13 @@ class CategoryTableViewCell: UITableViewCell {
             collectionView.showsHorizontalScrollIndicator = false
         }
     }
-    
-    @IBOutlet weak var categoryTitleLabel: UILabel!
-    
-    struct Component {
-    }
-    
+
+    @IBOutlet var categoryTitleLabel: UILabel!
+
+    struct Component {}
+
     private var component: Component?
-    
+
     func setupCell(component: Component) {
         self.component = component
     }
@@ -34,9 +33,9 @@ class CategoryTableViewCell: UITableViewCell {
 
 extension CategoryTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        5
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as SpaceCollectionViewCell
         let component = SpaceCollectionViewCell.Component()
@@ -47,11 +46,10 @@ extension CategoryTableViewCell: UICollectionViewDataSource {
 
 extension CategoryTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 180)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
+        CGSize(width: 200, height: 180)
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
+    }
 }

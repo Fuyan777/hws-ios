@@ -8,20 +8,18 @@
 import UIKit
 
 class SpaceCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var spaceImageView: UIImageView! {
+    @IBOutlet var spaceImageView: UIImageView! {
         didSet {
             spaceImageView.maskConer()
         }
     }
-    
-    @IBOutlet weak var spaceName: UILabel!
-    
-    struct Component {
-        
-    }
-    
+
+    @IBOutlet var spaceName: UILabel!
+
+    struct Component {}
+
     private var component: Component?
-    
+
     func setupCell(component: Component) {
         self.component = component
     }

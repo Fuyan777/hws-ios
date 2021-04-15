@@ -11,17 +11,16 @@ import RxSwift
 class TabBarViewModel {
     struct Dependency {
         var router: TabBarRouting
-        
+
         static func `default`(router: TabBarRouting) -> Dependency {
             Dependency(router: router)
         }
     }
-    
+
     private let dependency: Dependency
     private let disposeBag = DisposeBag()
-    
+
     init(dependency: Dependency) {
         self.dependency = dependency
     }
-    
 }

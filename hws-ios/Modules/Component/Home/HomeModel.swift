@@ -8,8 +8,5 @@
 import Foundation
 
 final class HomeModel {
-    
-    init() {
-        
-    }
+    init() {}
 }

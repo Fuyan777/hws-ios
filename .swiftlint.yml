@@ -1,0 +1,10 @@
+disabled_rules:
+  - line_length
+
+included:
+  - hws-ios
+
+excluded:
+  - Pods
+  - Generated
+  - Resources

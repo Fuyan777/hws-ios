@@ -9,9 +9,9 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let router: RootRouter = RootRouter()
+    let router = RootRouter()
     var window: UIWindow?
-    
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -22,4 +22,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

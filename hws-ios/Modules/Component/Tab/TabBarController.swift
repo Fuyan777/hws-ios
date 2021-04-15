@@ -12,17 +12,17 @@ import UIKit
 final class TabBarController: UITabBarController {
     private let disposeBag = DisposeBag()
     private let viewModel: TabBarViewModel
-    
+
     init(viewModel: TabBarViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .black

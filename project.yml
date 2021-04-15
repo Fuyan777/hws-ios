@@ -22,6 +22,11 @@ targets:
         product: RxRelay
       - package: RxSwift
         product: RxSwift
+    preBuildScripts:
+      - path: ./scripts/xcodegen/swiftformat.sh
+        name: Run SwiftFormat
+      - path: ./scripts/xcodegen/swiftlint.sh
+        name: Run SwiftLint
 packages:
   APIKit:
     url: https://github.com/ishkawa/APIKit

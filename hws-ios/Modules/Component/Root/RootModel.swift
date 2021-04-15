@@ -9,18 +9,17 @@ import RxRelay
 
 class RootModel {
     struct Dependency {
-        
         static var `default` = Dependency()
     }
-    
+
     let showTab = PublishRelay<Void>()
-    
+
     let dependency: Dependency
-    
+
     init(dependency: Dependency = .default) {
         self.dependency = dependency
     }
-    
+
     func setupContents() {
         showTab.accept(())
     }

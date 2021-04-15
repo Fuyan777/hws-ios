@@ -12,12 +12,12 @@ final class TabRouter: TabRouting, TabBarRouting {
     private lazy var homeRouter = NavigationRouter(tabRouter: self)
     private lazy var favoriteRouter = NavigationRouter(tabRouter: self)
     private lazy var mypageRouter = NavigationRouter(tabRouter: self)
-    
+
     private weak var rootRouter: RootRouting?
-    
+
     init(rootRouter: RootRouting?) {
         self.rootRouter = rootRouter
-        
+
         let controllers = Tab.allCases.map { tab -> (tab: Tab, controller: UIViewController) in
             switch tab {
             case .home:
@@ -52,11 +52,11 @@ final class TabRouter: TabRouting, TabBarRouting {
         }
         container.viewControllers = controllers.map { $0.controller }
     }
-    
+
     func select(tab: Tab) {
         container.selectedIndex = tab.rawValue
     }
-    
+
     func reset(tab: Tab) {
         switch tab {
         case .home:
@@ -73,17 +73,17 @@ final class TabRouter: TabRouting, TabBarRouting {
             mypageRouter.container.viewControllers = [controller]
         }
     }
-    
+
     func resetTabPages(initalTab: Tab) {
         Tab.allCases.forEach(reset(tab:))
         select(tab: initalTab)
     }
-    
+
     func showTabPages() {
         rootRouter?.showTabPages()
     }
-    
+
     func selectedTab() -> Tab {
-        return Tab(rawValue: container.selectedIndex) ?? .home
+        Tab(rawValue: container.selectedIndex) ?? .home
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol RootRouting: AnyObject {
     var container: RootViewController { get }
-    
+
     func start(in window: UIWindow)
     func resetAll()
     func showTabPages()

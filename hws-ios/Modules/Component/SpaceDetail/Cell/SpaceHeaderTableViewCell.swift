@@ -8,6 +8,11 @@
 import UIKit
 
 class SpaceHeaderTableViewCell: UITableViewCell {
+    struct Component {}
 
-    
+    private var component: Component?
+
+    func setupCell(component: Component) {
+        self.component = component
+    }
 }

@@ -7,7 +7,7 @@
 
 protocol TabRouting: AnyObject {
     var container: TabBarController { get }
-    
+
     func select(tab: Tab)
     func reset(tab: Tab)
     func resetTabPages(initalTab: Tab)
