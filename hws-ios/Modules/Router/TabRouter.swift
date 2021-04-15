@@ -60,7 +60,7 @@ final class TabRouter: TabRouting, TabBarRouting {
     func reset(tab: Tab) {
         switch tab {
         case .home:
-            let viewModel = HomeViewModel()
+            let viewModel = HomeViewModel(model: HomeModel())
             let controller = HomeViewController(viewModel: viewModel)
             homeRouter.container.viewControllers = [controller]
         case .favorite:

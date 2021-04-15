@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SpaceCollectionViewCell" customModule="hws_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="332" height="272"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="332" height="272"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNQ-Mj-tew">
+                        <rect key="frame" x="4" y="4" width="324" height="264"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oyy-pg-wzo">
+                                <rect key="frame" x="0.0" y="0.0" width="324" height="264"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dammy" translatesAutoresizingMaskIntoConstraints="NO" id="p2a-7o-3p2">
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="224"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タリーズコーヒー駅前店" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kef-Kb-SeN">
+                                        <rect key="frame" x="0.0" y="224" width="324" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FmS-XP-mp0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="oyy-pg-wzo" secondAttribute="bottom" id="5Di-Fm-33A"/>
+                            <constraint firstAttribute="trailing" secondItem="oyy-pg-wzo" secondAttribute="trailing" id="Jfx-cO-EGx"/>
+                            <constraint firstItem="oyy-pg-wzo" firstAttribute="leading" secondItem="KNQ-Mj-tew" secondAttribute="leading" id="K3d-33-ZvH"/>
+                            <constraint firstItem="oyy-pg-wzo" firstAttribute="top" secondItem="KNQ-Mj-tew" secondAttribute="top" id="y2J-0l-fpt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="KNQ-Mj-tew" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="Q9i-RS-4Rg"/>
+                <constraint firstItem="KNQ-Mj-tew" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="k8b-YT-EJj"/>
+                <constraint firstAttribute="bottom" secondItem="KNQ-Mj-tew" secondAttribute="bottom" constant="4" id="rIZ-sp-ROb"/>
+                <constraint firstAttribute="trailing" secondItem="KNQ-Mj-tew" secondAttribute="trailing" constant="4" id="vxV-Q8-fjc"/>
+            </constraints>
+            <size key="customSize" width="332" height="278.5"/>
+            <connections>
+                <outlet property="spaceImageView" destination="p2a-7o-3p2" id="3fr-LA-1wo"/>
+                <outlet property="spaceName" destination="kef-Kb-SeN" id="8bD-0I-dhg"/>
+            </connections>
+            <point key="canvasLocation" x="400.00000000000006" y="205.58035714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="dammy" width="161" height="133"/>
+    </resources>
+</document>

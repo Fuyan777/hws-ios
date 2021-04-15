@@ -8,6 +8,16 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = viewModel
+            let nibs = [
+                CategoryTableViewCell.self
+            ]
+            tableView.registerNib(cellTypes: nibs)
+        }
+    }
+    
     private let viewModel: HomeViewModel
     
     init(viewModel: HomeViewModel) {
