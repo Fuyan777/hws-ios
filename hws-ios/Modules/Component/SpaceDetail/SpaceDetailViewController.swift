@@ -12,7 +12,7 @@ class SpaceDetailViewController: UIViewController {
         didSet {
             tableView.dataSource = viewModel
             let nibs = [
-                SpaceHeaderTableViewCell.self
+                SpaceDetailHeaderTableViewCell.self
             ]
             tableView.registerNib(cellTypes: nibs)
         }

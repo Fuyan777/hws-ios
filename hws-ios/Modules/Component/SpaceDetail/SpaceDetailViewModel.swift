@@ -15,8 +15,8 @@ extension SpaceDetailViewModel: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceHeaderTableViewCell
-        let component = SpaceHeaderTableViewCell.Component()
+        let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceDetailHeaderTableViewCell
+        let component = SpaceDetailHeaderTableViewCell.Component()
         cell.setupCell(component: component)
         return cell
     }

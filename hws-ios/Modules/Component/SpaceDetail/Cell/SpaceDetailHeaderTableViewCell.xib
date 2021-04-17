@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="316" id="KGk-i7-Jjw" customClass="SpaceDetailHeaderTableViewCell" customModule="hws_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="333"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="327" height="333"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5DQ-X4-AfM">
+                        <rect key="frame" x="0.0" y="0.0" width="327" height="333"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dammy" translatesAutoresizingMaskIntoConstraints="NO" id="4JQ-T8-hcO">
+                                <rect key="frame" x="0.0" y="0.0" width="327" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="iap-bj-eSl"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2QX-1H-j7t">
+                                <rect key="frame" x="0.0" y="218" width="327" height="115"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タリーズコーヒー函館駅前店" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzY-7V-K4r">
+                                        <rect key="frame" x="8" y="0.0" width="311" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="cRr-uS-pV8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WDP-nx-KMG">
+                                        <rect key="frame" x="8" y="65" width="311" height="50"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9HJ-4P-cnD">
+                                                <rect key="frame" x="0.0" y="14.5" width="20" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="VMT-RI-vQ2"/>
+                                                    <constraint firstAttribute="height" constant="20" id="m5d-he-LY0"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日吉町2丁目1011" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLW-ND-ojw">
+                                                <rect key="frame" x="20" y="15" width="211" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYz-Oh-MaG">
+                                                <rect key="frame" x="231" y="12.5" width="80" height="25.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="p5B-Zh-COF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="3Uc-Jb-NRD"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="WDP-nx-KMG" secondAttribute="bottom" id="cTc-Nf-GJk"/>
+                                    <constraint firstItem="WDP-nx-KMG" firstAttribute="top" secondItem="yzY-7V-K4r" secondAttribute="bottom" id="fju-sj-gaB"/>
+                                    <constraint firstItem="yzY-7V-K4r" firstAttribute="leading" secondItem="2QX-1H-j7t" secondAttribute="leading" constant="8" id="hUU-ZQ-zd0"/>
+                                    <constraint firstAttribute="trailing" secondItem="WDP-nx-KMG" secondAttribute="trailing" constant="8" id="ieK-99-2KM"/>
+                                    <constraint firstAttribute="trailing" secondItem="yzY-7V-K4r" secondAttribute="trailing" constant="8" id="m0I-Mj-zKA"/>
+                                    <constraint firstItem="yzY-7V-K4r" firstAttribute="top" secondItem="2QX-1H-j7t" secondAttribute="top" id="pDI-qe-d9w"/>
+                                    <constraint firstItem="WDP-nx-KMG" firstAttribute="leading" secondItem="2QX-1H-j7t" secondAttribute="leading" constant="8" id="soB-ZN-jMr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4JQ-T8-hcO" secondAttribute="trailing" id="KpB-E1-XdS"/>
+                            <constraint firstItem="4JQ-T8-hcO" firstAttribute="leading" secondItem="5DQ-X4-AfM" secondAttribute="leading" id="kXS-5O-Qwb"/>
+                            <constraint firstItem="4JQ-T8-hcO" firstAttribute="top" secondItem="5DQ-X4-AfM" secondAttribute="top" id="pcG-Cp-TRw"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="5DQ-X4-AfM" secondAttribute="trailing" id="MOf-jp-uZQ"/>
+                    <constraint firstItem="5DQ-X4-AfM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="feL-0y-L16"/>
+                    <constraint firstItem="5DQ-X4-AfM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lxl-5M-xR5"/>
+                    <constraint firstAttribute="bottom" secondItem="5DQ-X4-AfM" secondAttribute="bottom" id="nqp-FR-RQe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="90.579710144927546" y="223.32589285714283"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="dammy" width="161" height="133"/>
+        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

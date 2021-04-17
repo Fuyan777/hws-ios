@@ -24,6 +24,7 @@ internal enum Asset {
     internal static let accentColor = ColorAsset(name: "AccentColor")
     internal static let dammy = ImageAsset(name: "dammy")
 }
+
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 // MARK: - Implementation Details
@@ -115,4 +116,5 @@ private final class BundleToken {
         #endif
     }()
 }
+
 // swiftlint:enable convenience_type
