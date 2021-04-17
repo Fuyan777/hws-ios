@@ -12,14 +12,14 @@ class SpaceDetailViewController: UIViewController {
         didSet {
             tableView.dataSource = viewModel
             let nibs = [
-                CategoryTableViewCell.self
+                SpaceHeaderTableViewCell.self
             ]
             tableView.registerNib(cellTypes: nibs)
         }
     }
 
     @IBOutlet var goSpaceButton: UIButton!
-    
+
     private let viewModel: SpaceDetailViewModel
 
     init(viewModel: SpaceDetailViewModel) {

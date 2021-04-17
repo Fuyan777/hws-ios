@@ -22,7 +22,13 @@ class CategoryTableViewCell: UITableViewCell {
 
     @IBOutlet var categoryTitleLabel: UILabel!
 
-    struct Component {}
+    struct Component {
+        enum Event {
+            case moveView
+        }
+
+        var event: (Event) -> Void
+    }
 
     private var component: Component?
 
@@ -41,6 +47,12 @@ extension CategoryTableViewCell: UICollectionViewDataSource {
         let component = SpaceCollectionViewCell.Component()
         cell.setupCell(component: component)
         return cell
+    }
+}
+
+extension CategoryTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        component?.event(.moveView)
     }
 }
 

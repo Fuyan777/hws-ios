@@ -8,7 +8,9 @@
 import UIKit
 
 final class TabRouter: TabRouting, TabBarRouting {
-    private(set) lazy var container = TabBarController(viewModel: TabBarViewModel(dependency: .default(router: self)))
+    private(set) lazy var container = TabBarController(
+        viewModel: TabBarViewModel(dependency: .default(router: self))
+    )
     private lazy var homeRouter = NavigationRouter(tabRouter: self)
     private lazy var favoriteRouter = NavigationRouter(tabRouter: self)
     private lazy var mypageRouter = NavigationRouter(tabRouter: self)
@@ -60,7 +62,10 @@ final class TabRouter: TabRouting, TabBarRouting {
     func reset(tab: Tab) {
         switch tab {
         case .home:
-            let viewModel = HomeViewModel(model: HomeModel())
+            let viewModel = HomeViewModel(
+                model: HomeModel(),
+                dependency: .default(router: homeRouter)
+            )
             let controller = HomeViewController(viewModel: viewModel)
             homeRouter.container.viewControllers = [controller]
         case .favorite:

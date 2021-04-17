@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol NavigationRouting {
+protocol NavigationRouting: HomeRouting {
     var container: UINavigationController { get }
 }

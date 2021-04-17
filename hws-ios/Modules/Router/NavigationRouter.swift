@@ -15,6 +15,12 @@ final class NavigationRouter: NavigationRouting {
         self.tabRouter = tabRouter
     }
 
+    func pushSpaceDetail() {
+        let viewModel = SpaceDetailViewModel()
+        let controller = SpaceDetailViewController(viewModel: viewModel)
+        container.pushViewController(controller, animated: true)
+    }
+
     func select(tab: Tab) {
         tabRouter?.select(tab: tab)
     }
