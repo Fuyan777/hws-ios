@@ -1,7 +1,7 @@
 # format options
 
  # file options
---exclude */modules, Pods
+--exclude Pods, Assets.swift, Localization.swift
 
  # rules
 --disable trailingClosures, trailingCommas
