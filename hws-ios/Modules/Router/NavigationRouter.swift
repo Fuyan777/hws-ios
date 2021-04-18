@@ -16,7 +16,7 @@ final class NavigationRouter: NavigationRouting {
     }
 
     func pushSpaceDetail() {
-        let viewModel = SpaceDetailViewModel()
+        let viewModel = SpaceDetailViewModel(model: SpaceDetailModel())
         let controller = SpaceDetailViewController(viewModel: viewModel)
         container.pushViewController(controller, animated: true)
     }
