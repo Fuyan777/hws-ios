@@ -56,7 +56,7 @@ extension SpaceDetailContentsTableViewCell: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(for: indexPath) as ContentTextViewCollectionViewCell
             let component = ContentTextViewCollectionViewCell.Component(
                 description: """
-                北海道函館市で電源コンセントを利用できるコーヒーショップやファーストフード、カフェ、コンビニイートインスペース、フードコートなどの電源スポット・充電スポットの一覧。函館市では，観光で本市を訪れる外国人の皆様に快適に過ごしていただけるよう公衆無線LAN環境の整備を行いました。現在は，以下の場所においてHAKODATE FREE Wi-Fi（ハコダテ　フリー　ワイファイ）を利用することができます。
+                北海道函館市で電源コンセントを利用できるコーヒーショップやファーストフード、カフェ、コンビニイートインスペース、フードコートなどの電源スポット・充電スポットの一覧。
                 """
             )
             cell.setupCell(component: component)
