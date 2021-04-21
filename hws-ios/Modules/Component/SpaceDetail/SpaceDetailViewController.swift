@@ -10,10 +10,12 @@ import UIKit
 class SpaceDetailViewController: UIViewController {
     @IBOutlet var tableView: UITableView! {
         didSet {
+            tableView.delegate = self
             tableView.dataSource = viewModel
             let nibs = [
                 SpaceDetailHeaderTableViewCell.self,
-                SpaceDetailContentsTableViewCell.self
+                ContentsTextViewTableViewCell.self,
+                ContentsIconTableViewCell.self
             ]
             tableView.registerNib(cellTypes: nibs)
         }
@@ -35,5 +37,15 @@ class SpaceDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+}
+
+extension SpaceDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        viewModel.tableHeightForHeader(section: section)
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        viewModel.viewForHeader(section: section, view: view)
     }
 }

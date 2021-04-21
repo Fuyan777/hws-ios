@@ -31,7 +31,7 @@
                 <constraint firstItem="bde-iS-VIR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="tN2-i2-Bo7"/>
             </constraints>
             <size key="customSize" width="125" height="166"/>
-            <point key="canvasLocation" x="63.768115942028992" y="142.63392857142856"/>
+            <point key="canvasLocation" x="-71" y="62"/>
         </collectionViewCell>
     </objects>
     <resources>

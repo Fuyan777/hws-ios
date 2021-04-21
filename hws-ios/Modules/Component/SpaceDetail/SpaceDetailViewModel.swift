@@ -10,7 +10,6 @@ import UIKit
 class SpaceDetailViewModel: NSObject {
     private let model: SpaceDetailModel
     let tableSection: [TableSection] = TableSection.allCases
-    let contentsList: [ContentsList] = ContentsList.allCases
 
     init(model: SpaceDetailModel) {
         self.model = model
@@ -33,51 +32,40 @@ extension SpaceDetailViewModel: UITableViewDataSource {
             let component = SpaceDetailHeaderTableViewCell.Component()
             cell.setupCell(component: component)
             return cell
-        case .contents:
-            let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceDetailContentsTableViewCell
-            cell.setupCell(component: contentsList[indexPath.row].component)
+        case .description:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsTextViewTableViewCell
+            let component = ContentsTextViewTableViewCell.Component(
+                text: "北海道函館市で電源コンセントを利用できるコーヒーショップやファーストフード、カフェ、コンビニイートインスペース、フードコートなどの電源スポット・充電スポットの一覧。"
+            )
+            cell.setupCell(component: component)
+            return cell
+        case .equipment:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsIconTableViewCell
+            let component = ContentsIconTableViewCell.Component()
+            cell.setupCell(component: component)
+            return cell
+        case .attension:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsTextViewTableViewCell
+            let component = ContentsTextViewTableViewCell.Component(
+                text: "基本的に静かに作業するようにしましょう！！"
+            )
+            cell.setupCell(component: component)
             return cell
         }
     }
-
-    enum TableSection: Int, CaseIterable {
-        case header, contents
-    }
-
-    func tableRowCount(section: Int) -> Int {
-        switch tableSection[section] {
-        case .header: return 1
-        case .contents: return contentsList.count
-        }
-    }
-
-    //    func tableRowCount(section: Int) -> Int {
-    //        switch tableSection[section] {
-    //        case .header: return 1
-    //        case .contents:
-    //            switch contentsList[section] {
-    //            case .description:
-    //                return 1
-    //            case .equipment:
-    //                return 1
-    //            case .attension:
-    //                return 1
-    //            }
-    //        }
-    //    }
-
-    enum ContentsList: Int, CaseIterable {
-        case description, equipment, attension
-
-        var component: SpaceDetailContentsTableViewCell.Component {
-            switch self {
-            case .description:
-                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ スペースの詳細", contentzType: .spaceDescription)
-            case .equipment:
-                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ 設備", contentzType: .equipment)
-            case .attension:
-                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ 注意事項", contentzType: .attension)
-            }
-        }
-    }
 }
+
+//    enum ContentsList: Int, CaseIterable {
+//        case description, equipment, attension
+//
+//        var component: SpaceDetailContentsTableViewCell.Component {
+//            switch self {
+//            case .description:
+//                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ スペースの詳細", contentzType: .spaceDescription)
+//            case .equipment:
+//                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ 設備", contentzType: .equipment)
+//            case .attension:
+//                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ 注意事項", contentzType: .attension)
+//            }
+//        }
+//    }
