@@ -1,0 +1,14 @@
+query getSpace {
+  space(spaceID: "starbucks-hakodate-goryokakumae-id") {
+    id
+    name
+    description
+    image
+    address
+    longitude
+    latitude
+    area
+    equipments
+    category
+  }
+}

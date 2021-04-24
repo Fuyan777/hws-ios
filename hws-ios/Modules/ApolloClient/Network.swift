@@ -12,6 +12,6 @@ final class Network {
     static let shared = Network()
 
     private(set) lazy var apollo = ApolloClient(
-        url: URL(string: "https://hwsapi.hysrtr.com/query")!
+        url: URL(string: Endpoint.graphqlPath)!
     )
 }

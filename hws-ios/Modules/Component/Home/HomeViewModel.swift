@@ -5,6 +5,8 @@
 //  Created by 山田楓也 on 2021/04/09.
 //
 
+import RxRelay
+import RxSwift
 import UIKit
 
 class HomeViewModel: NSObject {
@@ -16,12 +18,33 @@ class HomeViewModel: NSObject {
         }
     }
 
+    let getResponse = PublishRelay<GetSpaceQuery.Data.Space>()
+    let alertError = PublishRelay<Error>()
+
     private let dependency: Dependency
     private let model: HomeModel
+    private let disposeBag = DisposeBag()
 
     init(model: HomeModel, dependency: Dependency) {
         self.model = model
         self.dependency = dependency
+        super.init()
+        bindModel()
+        getSpace()
+    }
+
+    func getSpace() {
+        model.getSpace()
+    }
+
+    private func bindModel() {
+        model.requestSuccess.asObservable().subscribe(onNext: { [weak self] response in
+            self?.getResponse.accept(response)
+        }).disposed(by: disposeBag)
+
+        model.requestError.asObservable().subscribe(onNext: { [weak self] error in
+            self?.alertError.accept(error)
+        }).disposed(by: disposeBag)
     }
 }
 
