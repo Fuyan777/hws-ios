@@ -1,0 +1,6 @@
+query getUser {
+  user(userID: "test-user-id") {
+    id
+    name
+  }
+}

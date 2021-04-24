@@ -3,9 +3,10 @@ disabled_rules:
   - nesting
 
 included:
-  - hws-ios
+  - hws-ios/Modules
 
 excluded:
   - Pods
   - Generated
   - Resources
+  - API.swift

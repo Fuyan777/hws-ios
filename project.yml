@@ -23,10 +23,16 @@ targets:
       - package: RxSwift
         product: RxSwift
     preBuildScripts:
-      - path: ./scripts/xcodegen/swiftformat.sh
-        name: Run SwiftFormat
-      - path: ./scripts/xcodegen/swiftlint.sh
-        name: Run SwiftLint
+    - path: ./scripts/xcodegen/swiftformat.sh
+      name: Run SwiftFormat
+    - path: ./scripts/xcodegen/swiftlint.sh
+      name: Run SwiftLint
+    - script: |
+        SCRIPT_PATH="${PODS_ROOT}/Apollo/scripts"
+        cd "${SRCROOT}/${TARGET_NAME}"
+        "${SCRIPT_PATH}"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile="schema.json" API.swift
+        "${SCRIPT_PATH}"/run-bundled-codegen.sh schema:download --endpoint="https://hwsapi.hysrtr.com/query"
+      name: Generate Apollo GraphQL API
 packages:
   APIKit:
     url: https://github.com/ishkawa/APIKit
