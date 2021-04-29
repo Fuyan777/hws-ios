@@ -39,6 +39,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="b8P-nJ-3xN" secondAttribute="trailing" constant="16" id="6VR-JI-z0b"/>
                 <constraint firstItem="b8P-nJ-3xN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="H7w-pW-FU0"/>
@@ -55,6 +56,9 @@
     <resources>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

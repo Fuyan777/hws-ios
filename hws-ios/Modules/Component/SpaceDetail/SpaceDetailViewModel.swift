@@ -54,18 +54,3 @@ extension SpaceDetailViewModel: UITableViewDataSource {
         }
     }
 }
-
-//    enum ContentsList: Int, CaseIterable {
-//        case description, equipment, attension
-//
-//        var component: SpaceDetailContentsTableViewCell.Component {
-//            switch self {
-//            case .description:
-//                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ スペースの詳細", contentzType: .spaceDescription)
-//            case .equipment:
-//                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ 設備", contentzType: .equipment)
-//            case .attension:
-//                return SpaceDetailContentsTableViewCell.Component(contentName: "◆ 注意事項", contentzType: .attension)
-//            }
-//        }
-//    }
