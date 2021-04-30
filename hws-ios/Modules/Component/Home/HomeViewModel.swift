@@ -18,7 +18,7 @@ class HomeViewModel: NSObject {
         }
     }
 
-    let getResponse = PublishRelay<GetSpaceQuery.Data.Space>()
+    let reloadData = PublishRelay<Void>()
     let alertError = PublishRelay<Error>()
 
     private let dependency: Dependency
@@ -30,7 +30,6 @@ class HomeViewModel: NSObject {
         self.dependency = dependency
         super.init()
         bindModel()
-        getSpace()
     }
 
     func getSpace() {
@@ -38,8 +37,8 @@ class HomeViewModel: NSObject {
     }
 
     private func bindModel() {
-        model.requestSuccess.asObservable().subscribe(onNext: { [weak self] response in
-            self?.getResponse.accept(response)
+        model.requestSuccess.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.reloadData.accept(())
         }).disposed(by: disposeBag)
 
         model.requestError.asObservable().subscribe(onNext: { [weak self] error in
@@ -50,12 +49,15 @@ class HomeViewModel: NSObject {
 
 extension HomeViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        model.tableSection.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as CategoryTableViewCell
-        let component = CategoryTableViewCell.Component { event in
+        let component = CategoryTableViewCell.Component(
+            spaceData: model.spacesData,
+            title: model.tableSection[indexPath.row].title
+        ) { event in
             switch event {
             case .moveView:
                 self.dependency.router.pushSpaceDetail()

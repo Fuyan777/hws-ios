@@ -22,6 +22,7 @@ targets:
         product: RxRelay
       - package: RxSwift
         product: RxSwift
+      - package: SDWebImage
     preBuildScripts:
     - path: ./scripts/xcodegen/swiftformat.sh
       name: Run SwiftFormat
@@ -40,3 +41,6 @@ packages:
   RxSwift:
     url: https://github.com/ReactiveX/RxSwift
     version: 6.0.0
+  SDWebImage:
+    url: https://github.com/SDWebImage/SDWebImage
+    version: 5.10.3

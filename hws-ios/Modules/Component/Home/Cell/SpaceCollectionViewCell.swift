@@ -16,11 +16,18 @@ class SpaceCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var spaceName: UILabel!
 
-    struct Component {}
+    struct Component {
+        var spaceUrlString: String?
+        var spaceName: String
+    }
 
     private var component: Component?
 
     func setupCell(component: Component) {
         self.component = component
+        spaceName.text = component.spaceName
+
+        guard let urlString = component.spaceUrlString else { return }
+        spaceImageView.setImage(urlString: urlString)
     }
 }

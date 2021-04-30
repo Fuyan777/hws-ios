@@ -10,17 +10,33 @@ import RxRelay
 import RxSwift
 
 final class HomeModel {
-    let requestSuccess = PublishRelay<GetSpaceQuery.Data.Space>()
+    enum TableSection: Int, CaseIterable {
+        case cafe, beauty
+
+        var title: String {
+            switch self {
+            case .cafe: return "カフェで作業"
+            case .beauty: return "おしゃれな場所"
+            }
+        }
+    }
+
+    var tableSection = TableSection.allCases
+    var spaceData = [Spaces]()
+    var spacesData = [GetSpacesQuery.Data.Space]()
+    let requestSuccess = PublishRelay<Void>()
     let requestError = PublishRelay<Error>()
 
     init() {}
 
     func getSpace() {
-        Network.shared.apollo.fetch(query: GetSpaceQuery()) { result in
+        Network.shared.apollo.fetch(query: GetSpacesQuery()) { result in
             switch result {
             case let .success(response):
-                guard let response = response.data?.space else { return }
-                self.requestSuccess.accept(response)
+                guard let spacesData = response.data?.spaces else { return }
+                self.spacesData = spacesData
+                self.requestSuccess.accept(())
+                print(spacesData)
             case let .failure(error):
                 print(error)
                 self.requestError.accept(error)

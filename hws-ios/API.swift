@@ -345,6 +345,191 @@ public final class GetSpaceQuery: GraphQLQuery {
   }
 }
 
+public final class GetSpacesQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query getSpaces {
+      spaces(offset: 1, limit: 20) {
+        __typename
+        id
+        name
+        description
+        image
+        address
+        longitude
+        latitude
+        area
+        category
+        equipments
+      }
+    }
+    """
+
+  public let operationName: String = "getSpaces"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("spaces", arguments: ["offset": 1, "limit": 20], type: .nonNull(.list(.nonNull(.object(Space.selections))))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(spaces: [Space]) {
+      self.init(unsafeResultMap: ["__typename": "Query", "spaces": spaces.map { (value: Space) -> ResultMap in value.resultMap }])
+    }
+
+    public var spaces: [Space] {
+      get {
+        return (resultMap["spaces"] as! [ResultMap]).map { (value: ResultMap) -> Space in Space(unsafeResultMap: value) }
+      }
+      set {
+        resultMap.updateValue(newValue.map { (value: Space) -> ResultMap in value.resultMap }, forKey: "spaces")
+      }
+    }
+
+    public struct Space: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Space"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(String.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("description", type: .scalar(String.self)),
+          GraphQLField("image", type: .scalar(String.self)),
+          GraphQLField("address", type: .scalar(String.self)),
+          GraphQLField("longitude", type: .scalar(Double.self)),
+          GraphQLField("latitude", type: .scalar(Double.self)),
+          GraphQLField("area", type: .scalar(Area.self)),
+          GraphQLField("category", type: .scalar(Category.self)),
+          GraphQLField("equipments", type: .list(.nonNull(.scalar(Equipment.self)))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: String, name: String, description: String? = nil, image: String? = nil, address: String? = nil, longitude: Double? = nil, latitude: Double? = nil, area: Area? = nil, category: Category? = nil, equipments: [Equipment]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Space", "id": id, "name": name, "description": description, "image": image, "address": address, "longitude": longitude, "latitude": latitude, "area": area, "category": category, "equipments": equipments])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String {
+        get {
+          return resultMap["id"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String {
+        get {
+          return resultMap["name"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var description: String? {
+        get {
+          return resultMap["description"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      public var image: String? {
+        get {
+          return resultMap["image"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "image")
+        }
+      }
+
+      public var address: String? {
+        get {
+          return resultMap["address"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "address")
+        }
+      }
+
+      public var longitude: Double? {
+        get {
+          return resultMap["longitude"] as? Double
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "longitude")
+        }
+      }
+
+      public var latitude: Double? {
+        get {
+          return resultMap["latitude"] as? Double
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "latitude")
+        }
+      }
+
+      public var area: Area? {
+        get {
+          return resultMap["area"] as? Area
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "area")
+        }
+      }
+
+      public var category: Category? {
+        get {
+          return resultMap["category"] as? Category
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "category")
+        }
+      }
+
+      public var equipments: [Equipment]? {
+        get {
+          return resultMap["equipments"] as? [Equipment]
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "equipments")
+        }
+      }
+    }
+  }
+}
+
 public final class GetUserQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =

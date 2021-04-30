@@ -5,6 +5,8 @@
 //  Created by 山田楓也 on 2021/04/09.
 //
 
+import RxSwift
+import SDWebImage
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -19,6 +21,7 @@ class HomeViewController: UIViewController {
     }
 
     private let viewModel: HomeViewModel
+    private let disposeBag = DisposeBag()
 
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -32,5 +35,13 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getSpace()
+        bindViewModel()
+    }
+
+    private func bindViewModel() {
+        viewModel.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
     }
 }

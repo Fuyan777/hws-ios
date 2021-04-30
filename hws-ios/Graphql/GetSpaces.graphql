@@ -1,0 +1,17 @@
+query getSpaces {
+  spaces(
+    offset: 1,
+    limit: 20
+  ) {
+    id
+    name
+    description
+    image
+    address
+    longitude
+    latitude
+    area
+    category
+    equipments
+  }
+}

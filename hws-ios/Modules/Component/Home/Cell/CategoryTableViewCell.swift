@@ -27,6 +27,8 @@ class CategoryTableViewCell: UITableViewCell {
             case moveView
         }
 
+        var spaceData: [GetSpacesQuery.Data.Space]
+        var title: String
         var event: (Event) -> Void
     }
 
@@ -34,18 +36,24 @@ class CategoryTableViewCell: UITableViewCell {
 
     func setupCell(component: Component) {
         self.component = component
+        categoryTitleLabel.text = component.title
+        collectionView.reloadData()
     }
 }
 
 extension CategoryTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        component?.spaceData.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as SpaceCollectionViewCell
-        let component = SpaceCollectionViewCell.Component()
-        cell.setupCell(component: component)
+        guard let spaceData = component?.spaceData else { return UICollectionViewCell() }
+        let categoryComponent = SpaceCollectionViewCell.Component(
+            spaceUrlString: spaceData[indexPath.row].image,
+            spaceName: spaceData[indexPath.row].name
+        )
+        cell.setupCell(component: categoryComponent)
         return cell
     }
 }
