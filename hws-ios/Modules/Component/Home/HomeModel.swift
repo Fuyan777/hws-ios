@@ -27,8 +27,6 @@ final class HomeModel {
     let requestSuccess = PublishRelay<Void>()
     let requestError = PublishRelay<Error>()
 
-    init() {}
-
     func getSpace() {
         Network.shared.apollo.fetch(query: GetSpacesQuery()) { result in
             switch result {

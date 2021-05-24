@@ -151,4 +151,4 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
-hws-ios/Endpoint.swift
+hws-ios/Application/Endpoint.swift
