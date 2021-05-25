@@ -23,6 +23,12 @@ class SpaceCollectionViewCell: UICollectionViewCell {
 
     private var component: Component?
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        spaceImageView.sd_cancelCurrentImageLoad()
+        spaceImageView.image = nil
+    }
+
     func setupCell(component: Component) {
         self.component = component
         spaceName.text = component.spaceName
