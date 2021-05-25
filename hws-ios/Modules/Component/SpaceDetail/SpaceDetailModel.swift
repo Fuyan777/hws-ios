@@ -7,4 +7,10 @@
 
 import Foundation
 
-class SpaceDetailModel {}
+class SpaceDetailModel {
+    var spaceDetail: GetSpacesQuery.Data.Space
+
+    init(spaceDetail: GetSpacesQuery.Data.Space) {
+        self.spaceDetail = spaceDetail
+    }
+}

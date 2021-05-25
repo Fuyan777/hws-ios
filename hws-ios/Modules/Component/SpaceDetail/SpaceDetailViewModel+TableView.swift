@@ -10,6 +10,15 @@ import UIKit
 extension SpaceDetailViewModel {
     enum TableSection: Int, CaseIterable {
         case header, description, equipment, attension
+
+        var title: String {
+            switch self {
+            case .description: return "スペースの説明"
+            case .equipment: return "設備"
+            case .attension: return "利用上の注意"
+            default: return ""
+            }
+        }
     }
 
     // TODO: 0か1にするかの制御を追加
@@ -34,6 +43,8 @@ extension SpaceDetailViewModel {
         case .header: return nil
         default:
             let headerView = ContentsHeaderView()
+            let component = ContentsHeaderView.Component(title: tableSection[section].title)
+            headerView.setupView(component: component)
             return headerView
         }
     }

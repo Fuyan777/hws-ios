@@ -11,10 +11,11 @@ import RxSwift
 
 final class HomeModel {
     enum TableSection: Int, CaseIterable {
-        case cafe, beauty
+        case area, cafe, beauty
 
         var title: String {
             switch self {
+            case .area: return "エリアで選択"
             case .cafe: return "カフェで作業"
             case .beauty: return "おしゃれな場所"
             }
@@ -36,7 +37,6 @@ final class HomeModel {
                 self.requestSuccess.accept(())
                 print(spacesData)
             case let .failure(error):
-                print(error)
                 self.requestError.accept(error)
             }
         }

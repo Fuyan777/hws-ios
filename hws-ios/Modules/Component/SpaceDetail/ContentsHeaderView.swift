@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class ContentsHeaderView: UIView, NibOwnerLoadable {
+    @IBOutlet var headerTitleLabel: UILabel!
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNibContent()
@@ -19,5 +21,14 @@ class ContentsHeaderView: UIView, NibOwnerLoadable {
         loadNibContent()
     }
 
-    func setupView() {}
+    struct Component {
+        var title: String
+    }
+
+    private var component: Component?
+
+    func setupView(component: Component) {
+        self.component = component
+        headerTitleLabel.text = component.title
+    }
 }

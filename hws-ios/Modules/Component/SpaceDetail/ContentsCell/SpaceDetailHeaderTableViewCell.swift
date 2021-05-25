@@ -8,11 +8,19 @@
 import UIKit
 
 class SpaceDetailHeaderTableViewCell: UITableViewCell {
-    struct Component {}
+    @IBOutlet var spaceTitleLabel: UILabel!
+    @IBOutlet var spaceAddressLabel: UILabel!
+
+    struct Component {
+        var title: String
+        var address: String
+    }
 
     private var component: Component?
 
     func setupCell(component: Component) {
         self.component = component
+        spaceTitleLabel.text = component.title
+        spaceAddressLabel.text = component.address
     }
 }

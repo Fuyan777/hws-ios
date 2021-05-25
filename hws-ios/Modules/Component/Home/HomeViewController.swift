@@ -39,6 +39,11 @@ class HomeViewController: UIViewController {
         bindViewModel()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Hakoスペース"
+    }
+
     private func bindViewModel() {
         viewModel.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
             self?.tableView.reloadData()

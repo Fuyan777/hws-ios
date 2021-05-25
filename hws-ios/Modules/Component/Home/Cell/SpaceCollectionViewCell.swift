@@ -32,8 +32,9 @@ class SpaceCollectionViewCell: UICollectionViewCell {
     func setupCell(component: Component) {
         self.component = component
         spaceName.text = component.spaceName
+        spaceImageView.image = Asset.dammy.image
 
-        guard let urlString = component.spaceUrlString else { return }
-        spaceImageView.setImage(urlString: urlString)
+        //        guard let urlString = component.spaceUrlString else { return }
+        //        spaceImageView.setImage(urlString: urlString)
     }
 }

@@ -24,7 +24,7 @@ class CategoryTableViewCell: UITableViewCell {
 
     struct Component {
         enum Event {
-            case moveView
+            case moveView(Int)
         }
 
         var spaceData: [GetSpacesQuery.Data.Space]
@@ -60,7 +60,7 @@ extension CategoryTableViewCell: UICollectionViewDataSource {
 
 extension CategoryTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        component?.event(.moveView)
+        component?.event(.moveView(indexPath.row))
     }
 }
 

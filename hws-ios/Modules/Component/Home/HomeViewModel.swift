@@ -59,8 +59,8 @@ extension HomeViewModel: UITableViewDataSource {
             title: model.tableSection[indexPath.row].title
         ) { event in
             switch event {
-            case .moveView:
-                self.dependency.router.pushSpaceDetail()
+            case let .moveView(index):
+                self.dependency.router.pushSpaceDetail(spaceData: self.model.spacesData[index])
             }
         }
         cell.setupCell(component: component)

@@ -29,13 +29,16 @@ extension SpaceDetailViewModel: UITableViewDataSource {
         switch tableSection[indexPath.section] {
         case .header:
             let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceDetailHeaderTableViewCell
-            let component = SpaceDetailHeaderTableViewCell.Component()
+            let component = SpaceDetailHeaderTableViewCell.Component(
+                title: model.spaceDetail.name,
+                address: model.spaceDetail.address ?? "住所不明"
+            )
             cell.setupCell(component: component)
             return cell
         case .description:
             let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsTextViewTableViewCell
             let component = ContentsTextViewTableViewCell.Component(
-                text: "北海道函館市で電源コンセントを利用できるコーヒーショップやファーストフード、カフェ、コンビニイートインスペース、フードコートなどの電源スポット・充電スポットの一覧。"
+                text: model.spaceDetail.description ?? "説明なし"
             )
             cell.setupCell(component: component)
             return cell
