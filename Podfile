@@ -6,6 +6,7 @@ target 'hws-ios' do
   use_frameworks!
 
   pod "Apollo"
+  pod "SVProgressHUD"
 
   # Pods for hws-ios
 

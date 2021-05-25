@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import SVProgressHUD
 import UIKit
 
 extension UIViewController {
@@ -20,6 +21,21 @@ extension UIViewController {
         willMove(toParent: nil)
         view.removeFromSuperview()
         removeFromParent()
+    }
+}
+
+// Alert
+extension UIViewController {
+    func alertMessage(_ message: String, delay: TimeInterval = 2.0) {
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.showInfo(withStatus: message)
+        SVProgressHUD.dismiss(withDelay: delay)
+    }
+
+    func alertError(error: Error) {
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.showInfo(withStatus: error.localizedDescription)
+        SVProgressHUD.dismiss(withDelay: 2.0)
     }
 }
 

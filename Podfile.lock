@@ -2,17 +2,21 @@ PODS:
   - Apollo (0.42.0):
     - Apollo/Core (= 0.42.0)
   - Apollo/Core (0.42.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Apollo
+  - SVProgressHUD
 
 SPEC REPOS:
   trunk:
     - Apollo
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Apollo: c3f1cc3bfb36e1c4bbb642f44184ad759ad42a87
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 20d3005c579560ec10efbd08be93c5d54d8e98be
+PODFILE CHECKSUM: 614e623170bd27244289695f97b43ed6999b830e
 
 COCOAPODS: 1.10.1

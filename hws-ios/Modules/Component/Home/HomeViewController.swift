@@ -41,12 +41,16 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Hakoスペース"
+        navigationItem.title = L10n.Navigation.homeTitle
     }
 
     private func bindViewModel() {
         viewModel.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
             self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
+
+        viewModel.alertError.asObservable().subscribe(onNext: { [weak self] error in
+            self?.alertError(error: error)
         }).disposed(by: disposeBag)
     }
 }
