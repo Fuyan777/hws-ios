@@ -13,7 +13,7 @@ final class TabRouter: TabRouting, TabBarRouting {
     )
     private lazy var homeRouter = NavigationRouter(tabRouter: self)
     private lazy var favoriteRouter = NavigationRouter(tabRouter: self)
-    private lazy var mypageRouter = NavigationRouter(tabRouter: self)
+    private lazy var settingRouter = NavigationRouter(tabRouter: self)
 
     private weak var rootRouter: RootRouting?
 
@@ -26,8 +26,8 @@ final class TabRouter: TabRouting, TabBarRouting {
                 return (tab, homeRouter.container)
             case .favorite:
                 return (tab, favoriteRouter.container)
-            case .mypage:
-                return (tab, mypageRouter.container)
+            case .setting:
+                return (tab, settingRouter.container)
             }
         }
         controllers.forEach { tab, controller in
@@ -44,10 +44,10 @@ final class TabRouter: TabRouting, TabBarRouting {
                     image: UIImage(systemName: "heart"),
                     tag: tab.rawValue
                 )
-            case .mypage:
+            case .setting:
                 controller.tabBarItem = UITabBarItem(
-                    title: "マイページ",
-                    image: UIImage(systemName: "person"),
+                    title: "設定",
+                    image: UIImage(systemName: "gearshape"),
                     tag: tab.rawValue
                 )
             }
@@ -72,10 +72,10 @@ final class TabRouter: TabRouting, TabBarRouting {
             let viewModel = FavoriteViewModel()
             let controller = FavoriteViewController(viewModel: viewModel)
             favoriteRouter.container.viewControllers = [controller]
-        case .mypage:
-            let viewModel = MypageViewModel()
-            let controller = MypageViewController(viewModel: viewModel)
-            mypageRouter.container.viewControllers = [controller]
+        case .setting:
+            let viewModel = SettingViewModel()
+            let controller = SettingViewController(viewModel: viewModel)
+            settingRouter.container.viewControllers = [controller]
         }
     }
 

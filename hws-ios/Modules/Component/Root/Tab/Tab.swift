@@ -6,5 +6,5 @@
 //
 
 enum Tab: Int, CaseIterable {
-    case home, favorite, mypage
+    case home, favorite, setting
 }

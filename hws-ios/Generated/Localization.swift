@@ -15,6 +15,8 @@ internal enum L10n {
         internal static let favoriteTitle = L10n.tr("Localizable", "navigation.favoriteTitle")
         /// Hakoスペース
         internal static let homeTitle = L10n.tr("Localizable", "navigation.homeTitle")
+        /// 設定
+        internal static let settingTitle = L10n.tr("Localizable", "navigation.settingTitle")
     }
 }
 
