@@ -8,6 +8,16 @@
 import UIKit
 
 class FavoriteViewController: UIViewController {
+    @IBOutlet var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = viewModel
+            let nibs = [
+                SpaceTableViewCell.self
+            ]
+            tableView.registerNib(cellTypes: nibs)
+        }
+    }
+
     private let viewModel: FavoriteViewModel
 
     init(viewModel: FavoriteViewModel) {
@@ -22,5 +32,6 @@ class FavoriteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = L10n.Navigation.favoriteTitle
     }
 }
