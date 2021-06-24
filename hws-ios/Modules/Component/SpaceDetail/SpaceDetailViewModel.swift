@@ -8,11 +8,21 @@
 import UIKit
 
 class SpaceDetailViewModel: NSObject {
+    struct Dependency {
+        var router: SpaceDetailRouting
+
+        static func `default`(router: SpaceDetailRouting) -> Dependency {
+            Dependency(router: router)
+        }
+    }
+
     private let model: SpaceDetailModel
+    private let dependency: Dependency
     let tableSection: [TableSection] = TableSection.allCases
 
-    init(model: SpaceDetailModel) {
+    init(model: SpaceDetailModel, dependency: Dependency) {
         self.model = model
+        self.dependency = dependency
     }
 }
 
@@ -32,8 +42,13 @@ extension SpaceDetailViewModel: UITableViewDataSource {
             let component = SpaceDetailHeaderTableViewCell.Component(
                 title: model.spaceDetail.name,
                 address: model.spaceDetail.address ?? "住所不明"
-            )
-            cell.setupCell(component: component)
+            ) { event in
+                switch event {
+                case .moveMap:
+                    self.dependency.router.pushMap()
+                }
+            }
+            cell.setup(component: component)
             return cell
         case .description:
             let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsTextViewTableViewCell

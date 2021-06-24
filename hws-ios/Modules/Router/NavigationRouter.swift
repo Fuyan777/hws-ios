@@ -16,8 +16,15 @@ final class NavigationRouter: NavigationRouting {
         self.tabRouter = tabRouter
     }
 
+    func select(tab: Tab) {
+        tabRouter?.select(tab: tab)
+    }
+
     func pushSpaceDetail(spaceData: GetSpacesQuery.Data.Space) {
-        let viewModel = SpaceDetailViewModel(model: SpaceDetailModel(spaceDetail: spaceData))
+        let viewModel = SpaceDetailViewModel(
+            model: SpaceDetailModel(spaceDetail: spaceData),
+            dependency: .default(router: self)
+        )
         let controller = SpaceDetailViewController(viewModel: viewModel)
         container.pushViewController(controller, animated: true)
     }
@@ -31,7 +38,40 @@ final class NavigationRouter: NavigationRouting {
         container.present(router.container, animated: true)
     }
 
-    func select(tab: Tab) {
-        tabRouter?.select(tab: tab)
+    func pushMap() {
+        let viewModel = MapViewModel(
+            model: MapModel()
+        )
+        let controller = MapViewController(viewModel: viewModel)
+        container.pushViewController(controller, animated: true)
+    }
+
+    func presentMap() {
+        let router = NavigationRouter(tabRouter: tabRouter)
+        let viewModel = MapViewModel(model: MapModel())
+        let controller = MapViewController(viewModel: viewModel)
+        router.container.viewControllers = [controller]
+        controller.present(router.container, animated: true)
+    }
+
+    func dismiss() {
+        dismiss(completion: nil)
+    }
+
+    func dismiss(completion: (() -> Void)?) {
+        dismiss(animated: true, completion: completion)
+    }
+
+    func dismiss(animated: Bool, completion: (() -> Void)?) {
+        container.dismiss(
+            animated: animated
+        ) { [weak container] in
+            completion?()
+            container?.viewControllers.removeAll()
+        }
+    }
+
+    func pop() {
+        container.popViewController(animated: true)
     }
 }

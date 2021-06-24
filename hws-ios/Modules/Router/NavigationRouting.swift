@@ -8,6 +8,7 @@
 import UIKit
 
 protocol NavigationRouting: HomeRouting,
+                            SpaceDetailRouting,
                             SettingRouting {
     var container: UINavigationController { get }
 }
