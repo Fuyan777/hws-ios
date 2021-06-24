@@ -35,7 +35,6 @@ final class HomeModel {
                 guard let spacesData = response.data?.spaces else { return }
                 self.spacesData = spacesData
                 self.requestSuccess.accept(())
-                print(spacesData)
             case let .failure(error):
                 self.requestError.accept(error)
             }

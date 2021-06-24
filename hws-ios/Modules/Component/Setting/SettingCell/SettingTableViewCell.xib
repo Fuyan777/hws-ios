@@ -20,7 +20,10 @@
                         <rect key="frame" x="16" y="0.0" width="343" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uql-AM-S0R">
-                                <rect key="frame" x="0.0" y="12" width="323" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="323" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="reP-eQ-mJA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,9 +36,6 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="44" id="dxG-VE-Q9B"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
