@@ -16,8 +16,8 @@ final class HomeModel {
         var title: String {
             switch self {
             case .area: return "エリアで選択"
-            case .cafe: return "カフェで作業"
-            case .beauty: return "おしゃれな場所"
+            case .cafe: return "カフェで選択"
+            case .beauty: return "Wi-Fiのあるスペースで選択"
             }
         }
     }
