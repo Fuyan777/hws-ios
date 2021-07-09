@@ -59,7 +59,10 @@ extension SpaceDetailViewModel: UITableViewDataSource {
             return cell
         case .equipment:
             let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsIconTableViewCell
-            let component = ContentsIconTableViewCell.Component()
+            guard let equipment = model.equipments else { return cell }
+            let component = ContentsIconTableViewCell.Component(
+                equipment: equipment
+            )
             cell.setupCell(component: component)
             return cell
         case .attension:

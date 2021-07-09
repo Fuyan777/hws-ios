@@ -16,7 +16,9 @@ class ContentsIconTableViewCell: UITableViewCell {
         }
     }
 
-    struct Component {}
+    struct Component {
+        var equipment: [Equipment]
+    }
 
     private var component: Component?
 
@@ -27,12 +29,14 @@ class ContentsIconTableViewCell: UITableViewCell {
 
 extension ContentsIconTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        component?.equipment.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as ContentIconCollectionViewCell
-        let component = ContentIconCollectionViewCell.Component()
+        let component = ContentIconCollectionViewCell.Component(
+            equipment: component?.equipment[indexPath.row]
+        )
         cell.setupCell(component: component)
         return cell
     }

@@ -9,6 +9,7 @@ import Foundation
 
 class SpaceDetailModel {
     var spaceDetail: GetSpacesQuery.Data.Space
+    var equipments: [Equipment]? { spaceDetail.equipments }
 
     init(spaceDetail: GetSpacesQuery.Data.Space) {
         self.spaceDetail = spaceDetail
