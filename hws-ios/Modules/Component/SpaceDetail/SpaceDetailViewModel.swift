@@ -16,8 +16,8 @@ class SpaceDetailViewModel: NSObject {
         }
     }
 
-    private let model: SpaceDetailModel
     private let dependency: Dependency
+    let model: SpaceDetailModel
     let tableSection: [TableSection] = TableSection.allCases
 
     init(model: SpaceDetailModel, dependency: Dependency) {

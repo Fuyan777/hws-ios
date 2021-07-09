@@ -26,7 +26,7 @@ extension SpaceDetailViewModel {
         switch tableSection[section] {
         case .header: return 1
         case .description: return 1
-        case .equipment: return 1
+        case .equipment: return model.equipments == nil ? 0 : 1
         case .attension: return 1
         }
     }
