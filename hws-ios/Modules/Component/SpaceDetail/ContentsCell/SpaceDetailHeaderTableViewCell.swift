@@ -10,6 +10,12 @@ import UIKit
 class SpaceDetailHeaderTableViewCell: UITableViewCell {
     @IBOutlet var spaceTitleLabel: UILabel!
     @IBOutlet var spaceAddressLabel: UILabel!
+    @IBOutlet var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton.addTarget(self, action: #selector(tapFavorite), for: .touchUpInside)
+        }
+    }
+
     @IBOutlet var mapButton: UIButton! {
         didSet {
             mapButton.addTarget(self, action: #selector(moveMap), for: .touchUpInside)
@@ -18,13 +24,14 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
 
     struct Component {
         enum Event {
-            case moveMap
+            case moveMap, tapFavorite
         }
 
         var title: String
         var address: String
         var event: (Event) -> Void
         func moveMap() { event(.moveMap) }
+        func tapFavorite() { event(.tapFavorite) }
     }
 
     private var component: Component?
@@ -35,7 +42,15 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
         spaceAddressLabel.text = component.address
     }
 
-    @objc func moveMap() {
+    @objc
+    private func moveMap() {
         component?.moveMap()
+    }
+
+    @objc
+    private func tapFavorite() {
+        // TODO: サーバーできたら実装
+        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        component?.tapFavorite()
     }
 }

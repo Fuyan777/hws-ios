@@ -13,6 +13,5 @@ class SpaceDetailModel {
 
     init(spaceDetail: GetSpacesQuery.Data.Space) {
         self.spaceDetail = spaceDetail
-        print(spaceDetail)
     }
 }

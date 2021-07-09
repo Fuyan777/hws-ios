@@ -46,6 +46,8 @@ extension SpaceDetailViewModel: UITableViewDataSource {
                 switch event {
                 case .moveMap:
                     self.dependency.router.pushMap()
+                case .tapFavorite:
+                    print("tap") // TODO: サーバーできたら実装
                 }
             }
             cell.setup(component: component)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,41 +11,53 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="316" id="KGk-i7-Jjw" customClass="SpaceDetailHeaderTableViewCell" customModule="hws_ios" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="327" height="333"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="327" height="333"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5DQ-X4-AfM">
-                        <rect key="frame" x="0.0" y="0.0" width="327" height="333"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dammy" translatesAutoresizingMaskIntoConstraints="NO" id="4JQ-T8-hcO">
-                                <rect key="frame" x="0.0" y="0.0" width="327" height="210"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="iap-bj-eSl"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2QX-1H-j7t">
-                                <rect key="frame" x="0.0" y="218" width="327" height="115"/>
+                                <rect key="frame" x="0.0" y="218" width="375" height="115"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タリーズコーヒー函館駅前店" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzY-7V-K4r">
-                                        <rect key="frame" x="16" y="0.0" width="295" height="65"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="cRr-uS-pV8"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HsU-S3-ipD">
+                                        <rect key="frame" x="16" y="16" width="343" height="33"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タリーズコーヒー函館駅前店" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzY-7V-K4r">
+                                                <rect key="frame" x="0.0" y="0.0" width="305" height="33"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV2-m5-CTy">
+                                                <rect key="frame" x="313" y="0.0" width="30" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="RMn-pS-C2p"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="heart" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WDP-nx-KMG">
-                                        <rect key="frame" x="16" y="65" width="295" height="50"/>
+                                        <rect key="frame" x="16" y="65" width="343" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EPs-xE-BS7">
-                                                <rect key="frame" x="0.0" y="0.5" width="215" height="49"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="343" height="49"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lav-DC-9g0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="215" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9HJ-4P-cnD">
                                                                 <rect key="frame" x="0.0" y="-0.5" width="20" height="20.5"/>
@@ -56,7 +68,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日吉町2丁目1011" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLW-ND-ojw">
-                                                                <rect key="frame" x="20" y="0.0" width="195" height="20"/>
+                                                                <rect key="frame" x="20" y="0.0" width="323" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -64,21 +76,12 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8S-H2-0xM">
-                                                        <rect key="frame" x="0.0" y="20" width="215" height="29"/>
+                                                        <rect key="frame" x="0.0" y="20" width="343" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="マップを見る"/>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="徒歩 10分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYz-Oh-MaG">
-                                                <rect key="frame" x="215" y="14.5" width="80" height="21.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="p5B-Zh-COF"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="3Uc-Jb-NRD"/>
@@ -87,13 +90,13 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="HsU-S3-ipD" secondAttribute="trailing" constant="16" id="1RS-6g-BDy"/>
+                                    <constraint firstItem="HsU-S3-ipD" firstAttribute="leading" secondItem="2QX-1H-j7t" secondAttribute="leading" constant="16" id="Xyd-9r-c8g"/>
                                     <constraint firstAttribute="bottom" secondItem="WDP-nx-KMG" secondAttribute="bottom" id="cTc-Nf-GJk"/>
-                                    <constraint firstItem="WDP-nx-KMG" firstAttribute="top" secondItem="yzY-7V-K4r" secondAttribute="bottom" id="fju-sj-gaB"/>
-                                    <constraint firstItem="yzY-7V-K4r" firstAttribute="leading" secondItem="2QX-1H-j7t" secondAttribute="leading" constant="16" id="hUU-ZQ-zd0"/>
                                     <constraint firstAttribute="trailing" secondItem="WDP-nx-KMG" secondAttribute="trailing" constant="16" id="ieK-99-2KM"/>
-                                    <constraint firstAttribute="trailing" secondItem="yzY-7V-K4r" secondAttribute="trailing" constant="16" id="m0I-Mj-zKA"/>
-                                    <constraint firstItem="yzY-7V-K4r" firstAttribute="top" secondItem="2QX-1H-j7t" secondAttribute="top" id="pDI-qe-d9w"/>
+                                    <constraint firstItem="WDP-nx-KMG" firstAttribute="top" secondItem="HsU-S3-ipD" secondAttribute="bottom" constant="16" id="oES-OY-08h"/>
                                     <constraint firstItem="WDP-nx-KMG" firstAttribute="leading" secondItem="2QX-1H-j7t" secondAttribute="leading" constant="16" id="soB-ZN-jMr"/>
+                                    <constraint firstItem="HsU-S3-ipD" firstAttribute="top" secondItem="2QX-1H-j7t" secondAttribute="top" constant="16" id="yzX-HO-l1p"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -113,6 +116,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="favoriteButton" destination="wV2-m5-CTy" id="svK-2X-roS"/>
                 <outlet property="mapButton" destination="l8S-H2-0xM" id="Mxg-Qv-EUm"/>
                 <outlet property="spaceAddressLabel" destination="CLW-ND-ojw" id="O7Z-lH-CiE"/>
                 <outlet property="spaceTitleLabel" destination="yzY-7V-K4r" id="qjf-gU-Xp2"/>
@@ -122,6 +126,7 @@
     </objects>
     <resources>
         <image name="dammy" width="161" height="133"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
