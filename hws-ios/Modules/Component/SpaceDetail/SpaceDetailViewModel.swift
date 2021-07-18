@@ -5,6 +5,8 @@
 //  Created by 山田楓也 on 2021/04/15.
 //
 
+import RxRelay
+import RxSwift
 import UIKit
 
 class SpaceDetailViewModel: NSObject {
@@ -17,12 +19,22 @@ class SpaceDetailViewModel: NSObject {
     }
 
     private let dependency: Dependency
+    private let disposeBag = DisposeBag()
     let model: SpaceDetailModel
+    let reloadData = PublishRelay<Void>()
+
     let tableSection: [TableSection] = TableSection.allCases
 
     init(model: SpaceDetailModel, dependency: Dependency) {
         self.model = model
         self.dependency = dependency
+        bindModel()
+    }
+
+    private func bindModel() {
+        model.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.reloadData.accept(())
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -41,13 +53,14 @@ extension SpaceDetailViewModel: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceDetailHeaderTableViewCell
             let component = SpaceDetailHeaderTableViewCell.Component(
                 title: model.spaceDetail.name,
-                address: model.spaceDetail.address ?? "住所不明"
+                address: model.spaceDetail.address ?? "住所不明",
+                isFavorite: model.isFavorite
             ) { event in
                 switch event {
                 case .moveMap:
                     self.dependency.router.pushMap()
                 case .tapFavorite:
-                    print("tap") // TODO: サーバーできたら実装
+                    self.model.isFavorite ? self.model.deleteFavorite() : self.model.addFavorite()
                 }
             }
             cell.setup(component: component)

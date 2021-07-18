@@ -1,0 +1,49 @@
+//
+//  RealmManager.swift
+//  hws-ios
+//
+//  Created by 山田楓也 on 2021/07/18.
+//
+
+import RealmSwift
+
+class FavoriteSpace: Object {
+    @objc dynamic var spaceId = ""
+    @objc dynamic var spaceName = ""
+    @objc dynamic var spaceDescription = ""
+}
+
+final class RealmManager {
+    private var realm = try! Realm(configuration: Realm.Configuration(schemaVersion: 0))
+
+    func findAll<T: Object>(type: T.Type) -> Results<T> {
+        realm.objects(type)
+    }
+
+    func count<T: Object>(type: T.Type) -> Int {
+        findAll(type: type).count
+    }
+
+    func add<T: Object>(object: T) {
+        try! realm.write {
+            realm.add(object)
+        }
+    }
+}
+
+// MARK: Favorite
+
+extension RealmManager {
+    func findFavoriteSpace(spaceId: String) -> Bool {
+        let favoriteSpaces = realm.objects(FavoriteSpace.self)
+        let spaces = favoriteSpaces.filter("spaceId == %@", spaceId)
+        return spaces.count != 0
+    }
+
+    func deleteFavoriteSpace(spaceId: String) {
+        try! realm.write {
+            let object = realm.objects(FavoriteSpace.self).filter("spaceId == %@", spaceId)
+            realm.delete(object)
+        }
+    }
+}

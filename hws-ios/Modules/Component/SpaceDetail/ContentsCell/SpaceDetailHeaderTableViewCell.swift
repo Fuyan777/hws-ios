@@ -29,6 +29,7 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
 
         var title: String
         var address: String
+        var isFavorite: Bool
         var event: (Event) -> Void
         func moveMap() { event(.moveMap) }
         func tapFavorite() { event(.tapFavorite) }
@@ -40,6 +41,10 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
         self.component = component
         spaceTitleLabel.text = component.title
         spaceAddressLabel.text = component.address
+
+        component.isFavorite
+            ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
 
     @objc
@@ -49,8 +54,10 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
 
     @objc
     private func tapFavorite() {
-        // TODO: サーバーできたら実装
-        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         component?.tapFavorite()
+        let isFavoriteImage = component?.isFavorite ?? false
+        isFavoriteImage
+            ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
 }

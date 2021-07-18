@@ -1,6 +1,7 @@
 disabled_rules:
   - line_length
   - nesting
+  - force_try
 
 included:
   - hws-ios/Modules
