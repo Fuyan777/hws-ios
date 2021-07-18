@@ -7,6 +7,7 @@ target 'hws-ios' do
 
   pod "Apollo"
   pod "SVProgressHUD"
+  pod "RealmSwift"
 
   # Pods for hws-ios
 

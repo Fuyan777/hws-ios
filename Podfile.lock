@@ -2,21 +2,31 @@ PODS:
   - Apollo (0.42.0):
     - Apollo/Core (= 0.42.0)
   - Apollo/Core (0.42.0)
+  - Realm (10.7.4):
+    - Realm/Headers (= 10.7.4)
+  - Realm/Headers (10.7.4)
+  - RealmSwift (10.7.4):
+    - Realm (= 10.7.4)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Apollo
+  - RealmSwift
   - SVProgressHUD
 
 SPEC REPOS:
   trunk:
     - Apollo
+    - Realm
+    - RealmSwift
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   Apollo: c3f1cc3bfb36e1c4bbb642f44184ad759ad42a87
+  Realm: f08ce1a85649a41303ecfe1cbd914c62e9e6d710
+  RealmSwift: 60ec49d165f23d040ab48811d8dd177e09baf4d3
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 614e623170bd27244289695f97b43ed6999b830e
+PODFILE CHECKSUM: 4c384f6e78e34f34a9b352daa7ce42efd5c45ad6
 
 COCOAPODS: 1.10.1
