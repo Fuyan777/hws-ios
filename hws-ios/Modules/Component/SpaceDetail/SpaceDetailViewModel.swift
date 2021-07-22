@@ -28,6 +28,7 @@ class SpaceDetailViewModel: NSObject {
     init(model: SpaceDetailModel, dependency: Dependency) {
         self.model = model
         self.dependency = dependency
+        super.init()
         bindModel()
     }
 
