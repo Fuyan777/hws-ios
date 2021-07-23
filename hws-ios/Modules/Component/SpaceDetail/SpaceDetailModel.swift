@@ -22,32 +22,26 @@ class SpaceDetailModel {
     func addFavorite() {
         isFavorite.toggle()
         let space = FavoriteSpace()
-        space.spaceId = "hakodate-gsquare-id"
-        space.spaceName = "fuya"
-        space.spaceDescription = "こんにちは、今日は良い天気ダオ"
-        realmManager.add(object: space)
-
-        // TODO: 確認用
-        print("-----add------")
-        let value = realmManager.findAll(type: FavoriteSpace.self)
-        value.forEach { res in
-            print(res.spaceId)
+        space.spaceId = spaceDetail.id
+        space.spaceName = spaceDetail.name
+        space.spaceDescription = spaceDetail.description ?? ""
+        space.address = spaceDetail.address ?? ""
+        space.longitude = spaceDetail.longitude ?? 0.0
+        space.latitude = spaceDetail.latitude ?? 0.0
+        space.area = spaceDetail.area?.rawValue ?? ""
+        space.category = spaceDetail.category?.rawValue ?? ""
+        spaceDetail.equipments?.forEach {
+            let equipments = Equipments()
+            equipments.equipment = $0.rawValue
+            space.equipments.append(equipments)
         }
-        print("--------------")
+        realmManager.add(object: space)
         reloadData.accept(())
     }
 
     func deleteFavorite() {
         isFavorite.toggle()
         realmManager.deleteFavoriteSpace(spaceId: spaceDetail.id)
-
-        // TODO: 確認用
-        print("-----delete------")
-        let value = realmManager.findAll(type: FavoriteSpace.self)
-        value.forEach { res in
-            print(res.spaceId)
-        }
-        print("--------------")
         reloadData.accept(())
     }
 }

@@ -7,12 +7,6 @@
 
 import RealmSwift
 
-class FavoriteSpace: Object {
-    @objc dynamic var spaceId = ""
-    @objc dynamic var spaceName = ""
-    @objc dynamic var spaceDescription = ""
-}
-
 final class RealmManager {
     private var realm = try! Realm(configuration: Realm.Configuration(schemaVersion: 0))
 
@@ -31,7 +25,7 @@ final class RealmManager {
     }
 }
 
-// MARK: Favorite
+// MARK: Favorite Space
 
 extension RealmManager {
     func findFavoriteSpace(spaceId: String) -> Bool {
@@ -46,4 +40,20 @@ extension RealmManager {
             realm.delete(object)
         }
     }
+}
+
+class FavoriteSpace: Object {
+    @objc dynamic var spaceId = ""
+    @objc dynamic var spaceName = ""
+    @objc dynamic var spaceDescription = ""
+    @objc dynamic var address = ""
+    @objc dynamic var longitude = 0.0
+    @objc dynamic var latitude = 0.0
+    @objc dynamic var area = ""
+    @objc dynamic var category = ""
+    var equipments = List<Equipments>()
+}
+
+class Equipments: Object {
+    @objc dynamic var equipment = ""
 }
