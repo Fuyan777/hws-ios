@@ -69,7 +69,7 @@ final class TabRouter: TabRouting, TabBarRouting {
             let controller = HomeViewController(viewModel: viewModel)
             homeRouter.container.viewControllers = [controller]
         case .favorite:
-            let viewModel = FavoriteViewModel()
+            let viewModel = FavoriteViewModel(model: FavoriteModel(), dependency: .default(router: favoriteRouter))
             let controller = FavoriteViewController(viewModel: viewModel)
             favoriteRouter.container.viewControllers = [controller]
         case .setting:

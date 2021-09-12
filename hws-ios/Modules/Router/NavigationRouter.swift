@@ -22,7 +22,16 @@ final class NavigationRouter: NavigationRouting {
 
     func pushSpaceDetail(spaceData: GetSpacesQuery.Data.Space) {
         let viewModel = SpaceDetailViewModel(
-            model: SpaceDetailModel(spaceDetail: spaceData),
+            model: SpaceDetailModel(spacesDetail: spaceData),
+            dependency: .default(router: self)
+        )
+        let controller = SpaceDetailViewController(viewModel: viewModel)
+        container.pushViewController(controller, animated: true)
+    }
+
+    func pushSpaceDetail(favoriteSpace: FavoriteSpace) {
+        let viewModel = SpaceDetailViewModel(
+            model: SpaceDetailModel(favoriteSpaceDetail: favoriteSpace),
             dependency: .default(router: self)
         )
         let controller = SpaceDetailViewController(viewModel: viewModel)

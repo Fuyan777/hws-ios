@@ -23,7 +23,6 @@ final class HomeModel {
     }
 
     var tableSection = TableSection.allCases
-    var spaceData = [Spaces]()
     var spacesData = [GetSpacesQuery.Data.Space]()
     let requestSuccess = PublishRelay<Void>()
     let requestError = PublishRelay<Error>()

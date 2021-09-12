@@ -7,20 +7,39 @@
 
 import UIKit
 
-class FavoriteViewModel: NSObject {}
+class FavoriteViewModel: NSObject {
+    struct Dependency {
+        let router: FavoriteRouting
 
-extension FavoriteViewModel: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        static func `default`(router: FavoriteRouting) -> Dependency {
+            Dependency(router: router)
+        }
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceTableViewCell
-        let component = SpaceTableViewCell.Component(
-            imageUrlString: "sss",
-            title: "五稜郭"
+    private let dependency: Dependency
+    var model: FavoriteModel
+
+    init(model: FavoriteModel, dependency: Dependency) {
+        self.model = model
+        self.dependency = dependency
+    }
+
+    func tappedCellAction(index: Int) {
+        dependency.router.pushSpaceDetail(favoriteSpace: model.favoriteSpaces[index])
+    }
+}
+
+extension FavoriteViewModel: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        model.dataCount
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as FavoriteSpaceCollectionViewCell
+        let component = FavoriteSpaceCollectionViewCell.Component(
+            favoriteSpace: model.favoriteSpaces[indexPath.row]
         )
-        cell.setupCell(component: component)
+        cell.setup(component: component)
         return cell
     }
 }

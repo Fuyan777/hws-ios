@@ -5,22 +5,39 @@
 //  Created by 山田楓也 on 2021/04/17.
 //
 
+import Foundation
 import RxRelay
 
 class SpaceDetailModel {
-    var spaceDetail: GetSpacesQuery.Data.Space
-    var equipments: [Equipment]? { spaceDetail.equipments }
     private var realmManager = RealmManager()
-    var isFavorite: Bool
-    var reloadData = PublishRelay<Void>()
+    var spacesDetail: GetSpacesQuery.Data.Space?
+    var favoriteSpaceDetail: FavoriteSpace?
+    var isFavorite: Bool = true
+    var isFavoriteVC: Bool
+    var equipments: [Equipment]? {
+        spacesDetail?.equipments
+    }
 
-    init(spaceDetail: GetSpacesQuery.Data.Space) {
-        self.spaceDetail = spaceDetail
-        isFavorite = realmManager.findFavoriteSpace(spaceId: spaceDetail.id)
+    let reloadData = PublishRelay<Void>()
+    let requestError = PublishRelay<Error>()
+
+    // 通常画面から遷移した場合
+    init(spacesDetail: GetSpacesQuery.Data.Space) {
+        self.spacesDetail = spacesDetail
+        isFavorite = realmManager.findFavoriteSpace(spaceId: spacesDetail.id)
+        isFavoriteVC = false
+    }
+
+    // お気に入り画面から遷移した場合
+    init(favoriteSpaceDetail: FavoriteSpace) {
+        self.favoriteSpaceDetail = favoriteSpaceDetail
+        isFavoriteVC = true
     }
 
     func addFavorite() {
+        guard let spaceDetail = spacesDetail else { return }
         isFavorite.toggle()
+
         let space = FavoriteSpace()
         space.spaceId = spaceDetail.id
         space.spaceName = spaceDetail.name
@@ -40,6 +57,7 @@ class SpaceDetailModel {
     }
 
     func deleteFavorite() {
+        guard let spaceDetail = spacesDetail else { return }
         isFavorite.toggle()
         realmManager.deleteFavoriteSpace(spaceId: spaceDetail.id)
         reloadData.accept(())

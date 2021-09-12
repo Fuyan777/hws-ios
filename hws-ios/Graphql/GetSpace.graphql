@@ -1,5 +1,5 @@
-query getSpace {
-  space(spaceID: "starbucks-hakodate-goryokakumae-id") {
+query getSpace($spaceID: String!) {
+  space(spaceID: $spaceID) {
     id
     name
     description
