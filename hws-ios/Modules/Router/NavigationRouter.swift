@@ -20,9 +20,9 @@ final class NavigationRouter: NavigationRouting {
         tabRouter?.select(tab: tab)
     }
 
-    func pushSpaceDetail(spaceData: GetSpacesQuery.Data.Space) {
+    func pushSpaceDetail(spaceData: Space) {
         let viewModel = SpaceDetailViewModel(
-            model: SpaceDetailModel(spaceDetail: spaceData),
+            model: SpaceDetailModel(spacesDetail: spaceData),
             dependency: .default(router: self)
         )
         let controller = SpaceDetailViewController(viewModel: viewModel)

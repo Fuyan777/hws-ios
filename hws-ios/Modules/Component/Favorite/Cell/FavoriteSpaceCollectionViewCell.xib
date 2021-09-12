@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FavoriteSpaceCollectionViewCell" customModule="hws_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gwl-7Q-r84">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PIg-no-zdk">
+                                <rect key="frame" x="8" y="8" width="184" height="384"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dammy" translatesAutoresizingMaskIntoConstraints="NO" id="CKC-L1-Cfw">
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="178"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fza-NB-yOV">
+                                        <rect key="frame" x="0.0" y="186" width="184" height="82"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Fvz-oc-5QL">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="蔦屋書店" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pab-Te-880">
+                                                        <rect key="frame" x="0.0" y="16.5" width="144" height="17"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CTE-cB-VSw">
+                                                        <rect key="frame" x="148" y="7" width="36" height="36"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="5eq-gW-KSy"/>
+                                                            <constraint firstAttribute="width" constant="36" id="jSx-P5-epd"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="JzG-G4-nS7"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利用時間: 10:00~22:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyI-PJ-fL9">
+                                                <rect key="frame" x="0.0" y="50" width="184" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="BqR-BA-ccG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日吉町3丁目3010-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-l6-8Gj">
+                                                <rect key="frame" x="0.0" y="66" width="184" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="4Hl-He-YJb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-9Z-uGY">
+                                        <rect key="frame" x="0.0" y="276" width="184" height="56"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="3aB-ur-nKY"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1vb-65-NRe">
+                                            <size key="itemSize" width="30" height="30"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKz-Hm-lbM">
+                                        <rect key="frame" x="0.0" y="340" width="184" height="44"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="q8s-Rn-6Jb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <state key="normal" title="このスペースに向かう">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PIg-no-zdk" secondAttribute="trailing" constant="8" id="25l-YB-RcE"/>
+                            <constraint firstItem="PIg-no-zdk" firstAttribute="leading" secondItem="Gwl-7Q-r84" secondAttribute="leading" constant="8" id="bmJ-de-AlF"/>
+                            <constraint firstAttribute="bottom" secondItem="PIg-no-zdk" secondAttribute="bottom" constant="8" id="fdJ-w9-Mfi"/>
+                            <constraint firstItem="PIg-no-zdk" firstAttribute="top" secondItem="Gwl-7Q-r84" secondAttribute="top" constant="8" id="z36-fa-Udd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Gwl-7Q-r84" secondAttribute="bottom" id="IuH-tD-yDy"/>
+                <constraint firstItem="Gwl-7Q-r84" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Y0g-tX-d3e"/>
+                <constraint firstItem="Gwl-7Q-r84" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ybd-bu-CBf"/>
+                <constraint firstAttribute="trailing" secondItem="Gwl-7Q-r84" secondAttribute="trailing" id="Yid-lS-vFT"/>
+            </constraints>
+            <size key="customSize" width="296" height="452"/>
+            <connections>
+                <outlet property="addressLabel" destination="3nn-l6-8Gj" id="oQm-dG-Mun"/>
+                <outlet property="baseView" destination="Gwl-7Q-r84" id="fwW-tm-GIN"/>
+                <outlet property="equipmentCollectionView" destination="Cr9-9Z-uGY" id="yBQ-WO-N0Z"/>
+                <outlet property="iconImageView" destination="CTE-cB-VSw" id="ebP-Yu-vdq"/>
+                <outlet property="moveButton" destination="CKz-Hm-lbM" id="Q1z-I7-10U"/>
+                <outlet property="spaceImageView" destination="CKC-L1-Cfw" id="gkM-2h-W4E"/>
+                <outlet property="titleLabel" destination="Pab-Te-880" id="lYr-Wx-Xqe"/>
+                <outlet property="usageTimeLabel" destination="MyI-PJ-fL9" id="Q0e-4x-CZo"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="191.51785714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="dammy" width="161" height="133"/>
+        <namedColor name="AccentColor">
+            <color red="0.93725490196078431" green="0.78431372549019607" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

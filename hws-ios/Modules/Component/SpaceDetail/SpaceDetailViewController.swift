@@ -5,6 +5,7 @@
 //  Created by 山田楓也 on 2021/04/15.
 //
 
+import RxSwift
 import UIKit
 
 class SpaceDetailViewController: UIViewController {
@@ -24,6 +25,7 @@ class SpaceDetailViewController: UIViewController {
     @IBOutlet var goSpaceButton: UIButton!
 
     private let viewModel: SpaceDetailViewModel
+    private let disposeBag = DisposeBag()
 
     init(viewModel: SpaceDetailViewModel) {
         self.viewModel = viewModel
@@ -37,6 +39,13 @@ class SpaceDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindViewModel()
+    }
+
+    private func bindViewModel() {
+        viewModel.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
     }
 }
 

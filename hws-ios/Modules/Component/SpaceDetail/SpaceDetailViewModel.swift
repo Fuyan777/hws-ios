@@ -5,6 +5,8 @@
 //  Created by 山田楓也 on 2021/04/15.
 //
 
+import RxRelay
+import RxSwift
 import UIKit
 
 class SpaceDetailViewModel: NSObject {
@@ -17,12 +19,23 @@ class SpaceDetailViewModel: NSObject {
     }
 
     private let dependency: Dependency
+    private let disposeBag = DisposeBag()
     let model: SpaceDetailModel
+    let reloadData = PublishRelay<Void>()
+
     let tableSection: [TableSection] = TableSection.allCases
 
     init(model: SpaceDetailModel, dependency: Dependency) {
         self.model = model
         self.dependency = dependency
+        super.init()
+        bindModel()
+    }
+
+    private func bindModel() {
+        model.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.reloadData.accept(())
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -40,14 +53,15 @@ extension SpaceDetailViewModel: UITableViewDataSource {
         case .header:
             let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceDetailHeaderTableViewCell
             let component = SpaceDetailHeaderTableViewCell.Component(
-                title: model.spaceDetail.name,
-                address: model.spaceDetail.address ?? "住所不明"
+                title: model.spacesDetail.name,
+                address: model.spacesDetail.address,
+                isFavorite: model.isFavorite
             ) { event in
                 switch event {
                 case .moveMap:
                     self.dependency.router.pushMap()
                 case .tapFavorite:
-                    print("tap") // TODO: サーバーできたら実装
+                    self.model.isFavorite ? self.model.deleteFavorite() : self.model.addFavorite()
                 }
             }
             cell.setup(component: component)
@@ -55,15 +69,14 @@ extension SpaceDetailViewModel: UITableViewDataSource {
         case .description:
             let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsTextViewTableViewCell
             let component = ContentsTextViewTableViewCell.Component(
-                text: model.spaceDetail.description ?? "説明なし"
+                text: model.spacesDetail.description
             )
             cell.setupCell(component: component)
             return cell
         case .equipment:
             let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsIconTableViewCell
-            guard let equipment = model.equipments else { return cell }
             let component = ContentsIconTableViewCell.Component(
-                equipment: equipment
+                equipment: model.equipments
             )
             cell.setupCell(component: component)
             return cell

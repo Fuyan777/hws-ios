@@ -8,13 +8,15 @@
 import UIKit
 
 class FavoriteViewController: UIViewController {
-    @IBOutlet var tableView: UITableView! {
+    @IBOutlet var collectionView: UICollectionView! {
         didSet {
-            tableView.dataSource = viewModel
+            collectionView.dataSource = viewModel
+            collectionView.delegate = self
             let nibs = [
-                SpaceTableViewCell.self
+                FavoriteSpaceCollectionViewCell.self
             ]
-            tableView.registerNib(cellTypes: nibs)
+            collectionView.registerNib(cellTypes: nibs)
+            collectionView.contentInset = UIEdgeInsets(top: 8, left: 6, bottom: 6, right: 8)
         }
     }
 
@@ -33,5 +35,28 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.Navigation.favoriteTitle
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+}
+
+extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let horizontalSpace: CGFloat = 12.0
+        let cellSize = view.bounds.width / 2.0 - horizontalSpace
+        return CGSize(width: cellSize, height: 400.0)
+    }
+}
+
+extension FavoriteViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.tappedCellAction(index: indexPath.row)
     }
 }

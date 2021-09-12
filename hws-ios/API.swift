@@ -164,8 +164,8 @@ public final class GetSpaceQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query getSpace {
-      space(spaceID: "starbucks-hakodate-goryokakumae-id") {
+    query getSpace($spaceID: String!) {
+      space(spaceID: $spaceID) {
         __typename
         id
         name
@@ -183,7 +183,14 @@ public final class GetSpaceQuery: GraphQLQuery {
 
   public let operationName: String = "getSpace"
 
-  public init() {
+  public var spaceID: String
+
+  public init(spaceID: String) {
+    self.spaceID = spaceID
+  }
+
+  public var variables: GraphQLMap? {
+    return ["spaceID": spaceID]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -191,7 +198,7 @@ public final class GetSpaceQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("space", arguments: ["spaceID": "starbucks-hakodate-goryokakumae-id"], type: .nonNull(.object(Space.selections))),
+        GraphQLField("space", arguments: ["spaceID": GraphQLVariable("spaceID")], type: .nonNull(.object(Space.selections))),
       ]
     }
 

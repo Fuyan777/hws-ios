@@ -8,5 +8,5 @@
 import Foundation
 
 protocol HomeRouting: AnyObject {
-    func pushSpaceDetail(spaceData: GetSpacesQuery.Data.Space)
+    func pushSpaceDetail(spaceData: Space)
 }

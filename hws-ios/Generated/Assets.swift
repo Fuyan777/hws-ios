@@ -24,6 +24,7 @@ internal enum Asset {
     internal static let accentColor = ColorAsset(name: "AccentColor")
     internal static let dammy = ImageAsset(name: "dammy")
     internal static let icArrow = ImageAsset(name: "ic_arrow")
+    internal static let icCongestion = ImageAsset(name: "ic_congestion")
     internal static let icFood = ImageAsset(name: "ic_food")
     internal static let icGarbage = ImageAsset(name: "ic_garbage")
     internal static let icOutlet = ImageAsset(name: "ic_outlet")
