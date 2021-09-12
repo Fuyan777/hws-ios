@@ -21,7 +21,7 @@ class FavoriteModel {
 
     var spaces: [Space] { transform(from: favoriteSpaces) }
 
-    func transform(from favoriteSpaces: [FavoriteSpace]) -> [Space] {
+    private func transform(from favoriteSpaces: [FavoriteSpace]) -> [Space] {
         var spaceEntity: [Space] = []
 
         favoriteSpaces.forEach { space in

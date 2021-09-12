@@ -40,7 +40,7 @@ final class HomeModel {
         }
     }
 
-    func transform(from spaces: [GetSpacesQuery.Data.Space]) -> [Space] {
+    private func transform(from spaces: [GetSpacesQuery.Data.Space]) -> [Space] {
         var spaceEntity: [Space] = []
 
         spaces.forEach { space in
