@@ -25,7 +25,7 @@ class FavoriteViewModel: NSObject {
     }
 
     func tappedCellAction(index: Int) {
-        dependency.router.pushSpaceDetail(favoriteSpace: model.favoriteSpaces[index])
+        dependency.router.pushSpaceDetail(spaceData: model.spaces[index])
     }
 }
 
@@ -37,7 +37,7 @@ extension FavoriteViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as FavoriteSpaceCollectionViewCell
         let component = FavoriteSpaceCollectionViewCell.Component(
-            favoriteSpace: model.favoriteSpaces[indexPath.row]
+            favoriteSpace: model.spaces[indexPath.row]
         )
         cell.setup(component: component)
         return cell

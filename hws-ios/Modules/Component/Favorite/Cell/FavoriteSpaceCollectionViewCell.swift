@@ -36,14 +36,14 @@ class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
     }
 
     struct Component {
-        var favoriteSpace: FavoriteSpace
+        var favoriteSpace: Space
     }
 
     private var component: Component?
 
     func setup(component: Component) {
         self.component = component
-        titleLabel.text = component.favoriteSpace.spaceName
+        titleLabel.text = component.favoriteSpace.name
 
         //        TODO: imageの準備ができたら入れる
         //        spaceImageView.setImage(urlString: component.imageUrlString)
@@ -58,7 +58,7 @@ extension FavoriteSpaceCollectionViewCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as FavoriteSpaceContentIconCollectionViewCell
-        let equipmentValue = component?.favoriteSpace.equipments[indexPath.row]
+        guard let equipmentValue = component?.favoriteSpace.equipments[indexPath.row] else { return cell }
         let componentEquipment = FavoriteSpaceContentIconCollectionViewCell.ComponentFavorite(
             equipment: equipmentValue
         )

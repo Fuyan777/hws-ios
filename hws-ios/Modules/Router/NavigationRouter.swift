@@ -29,15 +29,6 @@ final class NavigationRouter: NavigationRouting {
         container.pushViewController(controller, animated: true)
     }
 
-    func pushSpaceDetail(favoriteSpace: FavoriteSpace) {
-        let viewModel = SpaceDetailViewModel(
-            model: SpaceDetailModel(favoriteSpaceDetail: favoriteSpace),
-            dependency: .default(router: self)
-        )
-        let controller = SpaceDetailViewController(viewModel: viewModel)
-        container.pushViewController(controller, animated: true)
-    }
-
     func presentSafariBrowser(url: URL) {
         let router = NavigationRouter(tabRouter: tabRouter)
         let controller = SFSafariViewController(url: url)

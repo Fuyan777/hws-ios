@@ -6,5 +6,5 @@
 //
 
 protocol FavoriteRouting: AnyObject {
-    func pushSpaceDetail(favoriteSpace: FavoriteSpace)
+    func pushSpaceDetail(spaceData: Space)
 }

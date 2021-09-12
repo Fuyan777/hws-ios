@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 import UIKit
 
 struct Space: Codable {
@@ -46,8 +47,16 @@ extension EquipmentEntity {
 
     func transform(to equipments: [Equipment]?) -> [EquipmentEntity] {
         var tmpArray: [EquipmentEntity] = []
-        equipments?.forEach { res in
-            tmpArray.append(EquipmentEntity(equipment: res.rawValue))
+        equipments?.forEach {
+            tmpArray.append(EquipmentEntity(equipment: $0.rawValue))
+        }
+        return tmpArray
+    }
+
+    func transformRealm(from equipments: List<Equipments>) -> [EquipmentEntity] {
+        var tmpArray: [EquipmentEntity] = []
+        equipments.forEach {
+            tmpArray.append(EquipmentEntity(equipment: $0.equipment))
         }
         return tmpArray
     }

@@ -11,7 +11,7 @@ class FavoriteSpaceContentIconCollectionViewCell: UICollectionViewCell {
     @IBOutlet var iconImageView: UIImageView!
 
     struct ComponentFavorite {
-        var equipment: Equipments?
+        var equipment: EquipmentEntity
     }
 
     private var componentFavorite: ComponentFavorite?
