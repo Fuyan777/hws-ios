@@ -27,7 +27,7 @@ class CategoryTableViewCell: UITableViewCell {
             case moveView(Int)
         }
 
-        var spaceData: [GetSpacesQuery.Data.Space]
+        var spaceData: [Space]
         var title: String
         var event: (Event) -> Void
     }

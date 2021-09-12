@@ -53,8 +53,8 @@ extension SpaceDetailViewModel: UITableViewDataSource {
         case .header:
             let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceDetailHeaderTableViewCell
             let component = SpaceDetailHeaderTableViewCell.Component(
-                title: model.spacesDetail?.name ?? "名前",
-                address: model.spacesDetail?.address ?? "住所不明",
+                title: model.spacesDetail.name,
+                address: model.spacesDetail.address,
                 isFavorite: model.isFavorite
             ) { event in
                 switch event {
@@ -69,15 +69,14 @@ extension SpaceDetailViewModel: UITableViewDataSource {
         case .description:
             let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsTextViewTableViewCell
             let component = ContentsTextViewTableViewCell.Component(
-                text: model.spacesDetail?.description ?? "説明なし"
+                text: model.spacesDetail.description
             )
             cell.setupCell(component: component)
             return cell
         case .equipment:
             let cell = tableView.dequeueReusableCell(for: indexPath) as ContentsIconTableViewCell
-            guard let equipment = model.equipments else { return cell }
             let component = ContentsIconTableViewCell.Component(
-                equipment: equipment
+                equipment: model.equipments
             )
             cell.setupCell(component: component)
             return cell

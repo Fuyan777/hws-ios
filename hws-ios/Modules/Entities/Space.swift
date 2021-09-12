@@ -17,14 +17,38 @@ struct Space: Codable {
     var longitude: Double
     var latitude: Double
     var area: String
-    var equipments: [Equipment]
-    var category: [Category]
+    var equipments: [EquipmentEntity]
+    var category: CategoryEntity
+}
 
-    struct Equipment: Codable {
-        var equipment: String = ""
+struct EquipmentEntity: Codable {
+    var equipment: String = ""
+}
+
+struct CategoryEntity: Codable {
+    var category = ""
+}
+
+extension EquipmentEntity {
+    enum EquipmentType {
+        case food, garbage, wifi, outlet, none
     }
 
-    struct Category: Codable {
-        var category = ""
+    var equipmentType: EquipmentType {
+        switch equipment {
+        case "Food": return .food
+        case "Garbage": return .garbage
+        case "Wifi": return .wifi
+        case "Outlet": return .outlet
+        default: return .none
+        }
+    }
+
+    func transform(to equipments: [Equipment]?) -> [EquipmentEntity] {
+        var tmpArray: [EquipmentEntity] = []
+        equipments?.forEach { res in
+            tmpArray.append(EquipmentEntity(equipment: res.rawValue))
+        }
+        return tmpArray
     }
 }

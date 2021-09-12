@@ -11,7 +11,7 @@ class ContentIconCollectionViewCell: UICollectionViewCell {
     @IBOutlet var iconImageView: UIImageView!
 
     struct Component {
-        var equipment: Equipment?
+        var equipment: EquipmentEntity
     }
 
     private var component: Component?
@@ -22,8 +22,9 @@ class ContentIconCollectionViewCell: UICollectionViewCell {
     }
 
     private func selectedIcon() {
-        guard let equipment = component?.equipment else { return }
-        switch equipment {
+        let elementType = component?.equipment.equipmentType
+
+        switch elementType {
         case .food:
             iconImageView.image = Asset.icFood.image
         case .garbage:
@@ -32,7 +33,7 @@ class ContentIconCollectionViewCell: UICollectionViewCell {
             iconImageView.image = Asset.icWifi.image
         case .outlet:
             iconImageView.image = Asset.icOutlet.image
-        default: return
+        default: break
         }
     }
 }
