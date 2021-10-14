@@ -69,8 +69,8 @@ extension MapViewModel: MKMapViewDelegate {
 }
 
 extension MapViewModel: CLLocationManagerDelegate {
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .restricted, .denied:
