@@ -25,6 +25,19 @@ final class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+
+            guard let tabBarController = tabBarController else { return }
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.backgroundColor = .white
+            tabBarController.tabBar.standardAppearance = tabBarAppearance
+            tabBarController.tabBar.scrollEdgeAppearance = tabBarAppearance
+        }
         tabBar.tintColor = .black
         tabBar.barTintColor = .white
         tabBar.isTranslucent = false
