@@ -13,6 +13,7 @@ targets:
       Debug: configs/hws-ios-Debug.xcconfig
       Release: configs/hws-ios-Release.xcconfig
     settings:
+      PRODUCT_NAME: HakoSpace
       CURRENT_PROJECT_VERSION: 1
     dependencies:
       - package: APIKit
