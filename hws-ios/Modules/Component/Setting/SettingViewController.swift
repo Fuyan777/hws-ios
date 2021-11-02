@@ -18,6 +18,9 @@ class SettingViewController: UIViewController {
                 SettingTableViewCell.self
             ]
             tableView.registerNib(cellTypes: nibs)
+            if #available(iOS 15.0, *) {
+                tableView.sectionHeaderTopPadding = 0
+            }
         }
     }
 
