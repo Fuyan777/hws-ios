@@ -14,7 +14,6 @@ class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var spaceImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var iconImageView: UIImageView!
     @IBOutlet var usageTimeLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var equipmentCollectionView: UICollectionView! {
@@ -44,10 +43,11 @@ class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
     func setup(component: Component) {
         self.component = component
         titleLabel.text = component.favoriteSpace.name
+        addressLabel.text = component.favoriteSpace.address
 
-        //        TODO: imageの準備ができたら入れる
+        //        TODO: バックエンドの準備が出来次第
         //        spaceImageView.setImage(urlString: component.imageUrlString)
-        iconImageView.image = Asset.icCongestion.image
+        usageTimeLabel.isHidden = true
     }
 }
 
