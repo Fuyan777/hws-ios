@@ -9,22 +9,28 @@ import UIKit
 
 class SpaceDetailHeaderTableViewCell: UITableViewCell {
     @IBOutlet var spaceTitleLabel: UILabel!
-    @IBOutlet var spaceAddressLabel: UILabel!
+    @IBOutlet var addressButton: UIButton! {
+        didSet {
+            addressButton.addTarget(self, action: #selector(moveMap), for: .touchUpInside)
+            addressButton.setTitleColor(.gray, for: .normal)
+        }
+    }
+
     @IBOutlet var favoriteButton: UIButton! {
         didSet {
             favoriteButton.addTarget(self, action: #selector(tapFavorite), for: .touchUpInside)
         }
     }
 
-    @IBOutlet var mapButton: UIButton! {
+    @IBOutlet var confusionButton: UIButton! {
         didSet {
-            mapButton.addTarget(self, action: #selector(moveMap), for: .touchUpInside)
+            confusionButton.addTarget(self, action: #selector(moveGoogleMaps), for: .touchUpInside)
         }
     }
 
     struct Component {
         enum Event {
-            case moveMap, tapFavorite
+            case moveMap, tapFavorite, moveGoogleMaps
         }
 
         var title: String
@@ -32,6 +38,7 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
         var isFavorite: Bool
         var event: (Event) -> Void
         func moveMap() { event(.moveMap) }
+        func moveGoogleMaps() { event(.moveGoogleMaps) }
         func tapFavorite() { event(.tapFavorite) }
     }
 
@@ -40,7 +47,7 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
     func setup(component: Component) {
         self.component = component
         spaceTitleLabel.text = component.title
-        spaceAddressLabel.text = component.address
+        addressButton.setTitle(component.address, for: .normal)
 
         component.isFavorite
             ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -59,5 +66,10 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
         isFavoriteImage
             ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+    }
+
+    @objc
+    private func moveGoogleMaps() {
+        component?.moveGoogleMaps()
     }
 }

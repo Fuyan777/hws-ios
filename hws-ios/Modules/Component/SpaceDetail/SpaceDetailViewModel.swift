@@ -62,6 +62,8 @@ extension SpaceDetailViewModel: UITableViewDataSource {
                     self.dependency.router.pushMap()
                 case .tapFavorite:
                     self.model.isFavorite ? self.model.deleteFavorite() : self.model.addFavorite()
+                case .moveGoogleMaps:
+                    self.openGooleMaps()
                 }
             }
             cell.setup(component: component)
@@ -87,6 +89,20 @@ extension SpaceDetailViewModel: UITableViewDataSource {
             )
             cell.setupCell(component: component)
             return cell
+        }
+    }
+}
+
+private extension SpaceDetailViewModel {
+    func openGooleMaps() {
+        let latitude = model.spacesDetail.latitude
+        let longitude = model.spacesDetail.latitude
+        let pinName = model.spacesDetail.name
+
+        let urlString = "https://maps.google.com/maps?q=\(pinName)¢er\(latitude.description),\(longitude.description)"
+        let encodeUrlString: String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        if let url = URL(string: encodeUrlString) {
+            UIApplication.shared.open(url)
         }
     }
 }
