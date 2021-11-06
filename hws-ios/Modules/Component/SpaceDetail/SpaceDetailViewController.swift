@@ -39,6 +39,7 @@ class SpaceDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        goSpaceButton.maskConer()
         bindViewModel()
     }
 
