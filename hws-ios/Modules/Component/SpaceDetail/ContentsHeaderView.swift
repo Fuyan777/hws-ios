@@ -29,6 +29,6 @@ class ContentsHeaderView: UIView, NibOwnerLoadable {
 
     func setupView(component: Component) {
         self.component = component
-        headerTitleLabel.text = component.title
+        headerTitleLabel.text = "◆ " + component.title
     }
 }
