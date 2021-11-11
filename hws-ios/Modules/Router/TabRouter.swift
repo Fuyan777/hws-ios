@@ -13,7 +13,7 @@ final class TabRouter: TabRouting, TabBarRouting {
     )
     private lazy var homeRouter = NavigationRouter(tabRouter: self)
     private lazy var favoriteRouter = NavigationRouter(tabRouter: self)
-    private lazy var settingRouter = NavigationRouter(tabRouter: self)
+    private lazy var recordRouter = NavigationRouter(tabRouter: self)
 
     private weak var rootRouter: RootRouting?
 
@@ -26,8 +26,8 @@ final class TabRouter: TabRouting, TabBarRouting {
                 return (tab, homeRouter.container)
             case .favorite:
                 return (tab, favoriteRouter.container)
-            case .setting:
-                return (tab, settingRouter.container)
+            case .record:
+                return (tab, recordRouter.container)
             }
         }
         controllers.forEach { tab, controller in
@@ -44,7 +44,7 @@ final class TabRouter: TabRouting, TabBarRouting {
                     image: UIImage(systemName: "heart"),
                     tag: tab.rawValue
                 )
-            case .setting:
+            case .record:
                 controller.tabBarItem = UITabBarItem(
                     title: "設定",
                     image: UIImage(systemName: "gearshape"),
@@ -72,9 +72,9 @@ final class TabRouter: TabRouting, TabBarRouting {
             let viewModel = FavoriteViewModel(model: FavoriteModel(), dependency: .default(router: favoriteRouter))
             let controller = FavoriteViewController(viewModel: viewModel)
             favoriteRouter.container.viewControllers = [controller]
-        case .setting:
-            let controller = RecordListViewController(viewModel: RecordListViewModel())
-            settingRouter.container.viewControllers = [controller]
+        case .record:
+            let controller = RecordListViewController(viewModel: RecordListViewModel(dependency: .default(router: recordRouter)))
+            recordRouter.container.viewControllers = [controller]
         }
     }
 

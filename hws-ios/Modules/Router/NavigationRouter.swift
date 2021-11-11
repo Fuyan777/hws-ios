@@ -46,6 +46,12 @@ final class NavigationRouter: NavigationRouting {
         container.pushViewController(controller, animated: true)
     }
 
+    func pushRecord() {
+        let viewModel = RecordViewModel(model: RecordModel())
+        let controller = RecordViewController(viewModel: viewModel)
+        container.pushViewController(controller, animated: true)
+    }
+
     func presentMap() {
         let router = NavigationRouter(tabRouter: tabRouter)
         let viewModel = MapViewModel(model: MapModel())

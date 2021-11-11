@@ -5,6 +5,7 @@
 //  Created by 山田楓也 on 2021/11/06.
 //
 
+import RxSwift
 import UIKit
 
 final class RecordListViewController: UIViewController {
@@ -20,10 +21,12 @@ final class RecordListViewController: UIViewController {
     }
 
     private let viewModel: RecordListViewModel
+    private let disposeBag = DisposeBag()
 
     init(viewModel: RecordListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        bindViewModel()
     }
 
     @available(*, unavailable)
@@ -34,24 +37,16 @@ final class RecordListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "作業記録"
-
-        let rightButton = UIBarButtonItem(
-            image: UIImage(systemName: "plus"),
-            style: .plain,
-            target: self,
-            action: #selector(addButtonTapped)
-        )
-        rightButton.tintColor = Asset.accentColor.color
-        navigationItem.rightBarButtonItem = rightButton
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.setBarButtonItem()
     }
 
-    @objc
-    func addButtonTapped() {
-        // TODO: のちほど修正
-        print("tapped")
+    private func bindViewModel() {
+        viewModel.barButtonItem.asObservable().subscribe(onNext: { [weak self] barButton in
+            self?.navigationItem.rightBarButtonItem = barButton
+        }).disposed(by: disposeBag)
     }
 }

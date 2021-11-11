@@ -6,9 +6,44 @@
 //
 
 import Foundation
+import RxRelay
+import RxSwift
 import UIKit
 
-class RecordListViewModel: NSObject {}
+class RecordListViewModel: NSObject {
+    struct Dependency {
+        let router: RecordRouting
+
+        static func `default`(router: RecordRouting) -> Dependency {
+            Dependency(router: router)
+        }
+    }
+
+    let barButtonItem = PublishRelay<UIBarButtonItem>()
+
+    private let dependency: Dependency
+
+    init(dependency: Dependency) {
+        self.dependency = dependency
+        super.init()
+    }
+
+    func setBarButtonItem() {
+        let rightButton = UIBarButtonItem(
+            image: UIImage(systemName: "plus"),
+            style: .plain,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+        rightButton.tintColor = Asset.accentColor.color
+        barButtonItem.accept(rightButton)
+    }
+
+    @objc
+    func addButtonTapped() {
+        dependency.router.pushRecord()
+    }
+}
 
 extension RecordListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
