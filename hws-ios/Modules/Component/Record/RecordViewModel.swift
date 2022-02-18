@@ -6,10 +6,15 @@
 //
 
 import Foundation
+import RxRelay
 import UIKit
 
 final class RecordViewModel: NSObject {
     private let model: RecordModel
+
+    let didTapDoneButton = PublishRelay<Void>()
+    let didTapCancelButton = PublishRelay<Void>()
+
 
     init(model: RecordModel) {
         self.model = model
@@ -44,7 +49,14 @@ extension RecordViewModel: UITableViewDataSource {
                 return cell
             case .location:
                 let cell = tableView.dequeueReusableCell(for: indexPath) as RecordPickerFormTableViewCell
-                let component = RecordPickerFormTableViewCell.Component()
+                let component = RecordPickerFormTableViewCell.Component(title: model.cellTypes[indexPath.row].title, list: ["選択なし" ,"orange", "mouth", "america"], viewWidth: 300) { event in
+                    switch event {
+                    case let .doneTapped(selectedItems):
+                        self.didTapDoneButton.accept(())
+                    case .cancelTapped:
+                        self.didTapCancelButton.accept(())
+                    }
+                }
                 cell.configure(component: component)
                 return cell
             case .memo:

@@ -21,18 +21,23 @@
                         <rect key="frame" x="16" y="4" width="288" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3l-Dv-j6f">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="ptV-qS-XMF"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="128" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9T-ic-FwC">
-                                <rect key="frame" x="80" y="0.0" width="208" height="40"/>
-                            </pickerView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PTJ-mg-EEc">
+                                <rect key="frame" x="128" y="0.0" width="160" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="HWf-bI-K7G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PTJ-mg-EEc" secondAttribute="trailing" id="VMB-de-owX"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -44,7 +49,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="pickerView" destination="L9T-ic-FwC" id="yPl-Ts-ZpQ"/>
+                <outlet property="locationTextField" destination="PTJ-mg-EEc" id="Bb6-Mw-3g7"/>
                 <outlet property="titleLabel" destination="s3l-Dv-j6f" id="JG5-zX-JZY"/>
             </connections>
             <point key="canvasLocation" x="138" y="139"/>

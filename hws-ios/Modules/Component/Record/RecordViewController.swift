@@ -5,6 +5,7 @@
 //  Created by 山田楓也 on 2021/11/11.
 //
 
+import RxSwift
 import UIKit
 
 final class RecordViewController: UIViewController {
@@ -23,10 +24,12 @@ final class RecordViewController: UIViewController {
     }
 
     private let viewModel: RecordViewModel
+    private let disposeBag = DisposeBag()
 
     init(viewModel: RecordViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        bindViewModel()
     }
 
     @available(*, unavailable)
@@ -36,5 +39,15 @@ final class RecordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    private func bindViewModel() {
+        viewModel.didTapDoneButton.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.view.endEditing(true)
+        }).disposed(by: disposeBag)
+        
+        viewModel.didTapCancelButton.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.view.endEditing(true)
+        }).disposed(by: disposeBag)
     }
 }
