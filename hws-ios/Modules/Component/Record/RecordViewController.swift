@@ -39,6 +39,7 @@ final class RecordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.setBarButtonItem()
     }
 
     private func bindViewModel() {
@@ -48,6 +49,10 @@ final class RecordViewController: UIViewController {
 
         viewModel.didTapCancelButton.asObservable().subscribe(onNext: { [weak self] _ in
             self?.view.endEditing(true)
+        }).disposed(by: disposeBag)
+
+        viewModel.barButtonItem.asObservable().subscribe(onNext: { [weak self] barButton in
+            self?.navigationItem.rightBarButtonItem = barButton
         }).disposed(by: disposeBag)
     }
 }

@@ -47,7 +47,10 @@ final class NavigationRouter: NavigationRouting {
     }
 
     func pushRecord() {
-        let viewModel = RecordViewModel(model: RecordModel())
+        let viewModel = RecordViewModel(
+            model: RecordModel(),
+            dependency: .default(router: self)
+        )
         let controller = RecordViewController(viewModel: viewModel)
         container.pushViewController(controller, animated: true)
     }

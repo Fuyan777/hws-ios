@@ -10,13 +10,40 @@ import RxRelay
 import UIKit
 
 final class RecordViewModel: NSObject {
+    struct Dependency {
+        let router: RecordRouting
+
+        static func `default`(router: RecordRouting) -> Dependency {
+            Dependency(router: router)
+        }
+    }
+
     private let model: RecordModel
+    private let dependency: Dependency
 
     let didTapDoneButton = PublishRelay<Void>()
     let didTapCancelButton = PublishRelay<Void>()
+    let barButtonItem = PublishRelay<UIBarButtonItem>()
 
-    init(model: RecordModel) {
+    init(model: RecordModel, dependency: Dependency) {
         self.model = model
+        self.dependency = dependency
+    }
+
+    func setBarButtonItem() {
+        let rightButton = UIBarButtonItem(
+            title: "追加",
+            style: .plain,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+        rightButton.tintColor = Asset.accentColor.color
+        barButtonItem.accept(rightButton)
+    }
+
+    @objc
+    func addButtonTapped() {
+        dependency.router.pop()
     }
 }
 
