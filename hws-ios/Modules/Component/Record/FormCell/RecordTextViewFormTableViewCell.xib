@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ns-Zc-cR0">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ns-Zc-cR0" customClass="PlaceHolderTextView" customModule="HakoSpace" customModuleProvider="target">
                         <rect key="frame" x="16" y="8" width="343" height="134"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>

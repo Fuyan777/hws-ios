@@ -18,6 +18,7 @@ class RecordFormTableViewCell: UITableViewCell {
     private var component: Component?
 
     func configure(component: Component) {
+        self.component = component
         titleLabel.text = component.title
         datePicker.preferredDatePickerStyle = .compact
     }

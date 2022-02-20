@@ -65,7 +65,12 @@ extension RecordViewModel: UITableViewDataSource {
             return cell
         case .memo:
             let cell = tableView.dequeueReusableCell(for: indexPath) as RecordTextViewFormTableViewCell
-            let component = RecordTextViewFormTableViewCell.Component(memoText: model.cellTypes[indexPath.row].title)
+            let component = RecordTextViewFormTableViewCell.Component(memoText: model.cellTypes[indexPath.row].title) { event in
+                switch event {
+                case .doneTapped:
+                    self.didTapDoneButton.accept(())
+                }
+            }
             cell.configure(component: component)
             return cell
         }
