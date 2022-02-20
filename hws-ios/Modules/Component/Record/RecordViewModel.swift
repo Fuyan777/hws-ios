@@ -15,60 +15,57 @@ final class RecordViewModel: NSObject {
     let didTapDoneButton = PublishRelay<Void>()
     let didTapCancelButton = PublishRelay<Void>()
 
-
     init(model: RecordModel) {
         self.model = model
     }
 }
 
 extension RecordViewModel: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        model.sectionTypes.count
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch model.sectionTypes[section] {
-        case .working: return model.cellTypes.count
-        case .congestion: return 1
-        }
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        model.sectionTypes[section].title
+        model.cellTypes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch model.sectionTypes[indexPath.section] {
-        case .working:
-
-            switch model.cellTypes[indexPath.row] {
-            case .startDate, .endDate:
-                let cell = tableView.dequeueReusableCell(for: indexPath) as RecordFormTableViewCell
-                let component = RecordFormTableViewCell.Component(title: model.cellTypes[indexPath.row].title)
-                cell.configure(component: component)
-                return cell
-            case .location:
-                let cell = tableView.dequeueReusableCell(for: indexPath) as RecordPickerFormTableViewCell
-                let component = RecordPickerFormTableViewCell.Component(title: model.cellTypes[indexPath.row].title, list: ["選択なし" ,"orange", "mouth", "america"], viewWidth: 300) { event in
-                    switch event {
-                    case let .doneTapped(selectedItems):
-                        self.didTapDoneButton.accept(())
-                    case .cancelTapped:
-                        self.didTapCancelButton.accept(())
-                    }
+        switch model.cellTypes[indexPath.row] {
+        case .startDate, .endDate:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as RecordFormTableViewCell
+            let component = RecordFormTableViewCell.Component(title: model.cellTypes[indexPath.row].title)
+            cell.configure(component: component)
+            return cell
+        case .location:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as RecordPickerFormTableViewCell
+            let component = RecordPickerFormTableViewCell.Component(
+                title: model.cellTypes[indexPath.row].title,
+                list: ["該当なし", "orange", "mouth", "america"], viewWidth: 300
+            ) { event in
+                switch event {
+                case let .doneTapped(selectedItems):
+                    self.didTapDoneButton.accept(())
+                case .cancelTapped:
+                    self.didTapCancelButton.accept(())
                 }
-                cell.configure(component: component)
-                return cell
-            case .memo:
-                let cell = tableView.dequeueReusableCell(for: indexPath) as RecordTextViewFormTableViewCell
-                let component = RecordTextViewFormTableViewCell.Component(memoText: model.cellTypes[indexPath.row].title)
-                cell.configure(component: component)
-                return cell
             }
-
+            cell.configure(component: component)
+            return cell
         case .congestion:
-            let cell = tableView.dequeueReusableCell(for: indexPath) as RecordSelectedFormTableViewCell
-            let component = RecordSelectedFormTableViewCell.Component()
+            let cell = tableView.dequeueReusableCell(for: indexPath) as RecordPickerFormTableViewCell
+            let component = RecordPickerFormTableViewCell.Component(
+                title: model.cellTypes[indexPath.row].title,
+                list: ["快適", "普通", "混雑"],
+                viewWidth: 300
+            ) { event in
+                switch event {
+                case let .doneTapped(selectedItems):
+                    self.didTapDoneButton.accept(())
+                case .cancelTapped:
+                    self.didTapCancelButton.accept(())
+                }
+            }
+            cell.configure(component: component)
+            return cell
+        case .memo:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as RecordTextViewFormTableViewCell
+            let component = RecordTextViewFormTableViewCell.Component(memoText: model.cellTypes[indexPath.row].title)
             cell.configure(component: component)
             return cell
         }

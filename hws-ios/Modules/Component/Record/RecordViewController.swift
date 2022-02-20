@@ -45,7 +45,7 @@ final class RecordViewController: UIViewController {
         viewModel.didTapDoneButton.asObservable().subscribe(onNext: { [weak self] _ in
             self?.view.endEditing(true)
         }).disposed(by: disposeBag)
-        
+
         viewModel.didTapCancelButton.asObservable().subscribe(onNext: { [weak self] _ in
             self?.view.endEditing(true)
         }).disposed(by: disposeBag)

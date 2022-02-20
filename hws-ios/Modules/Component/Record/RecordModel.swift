@@ -9,29 +9,18 @@ import Foundation
 
 class RecordModel {
     let cellTypes = RecordCellType.allCases
-    let sectionTypes = RecordSectionType.allCases
 }
 
 enum RecordCellType: CaseIterable {
-    case startDate, endDate, location, memo
+    case startDate, endDate, location, congestion, memo
 
     var title: String {
         switch self {
         case .startDate: return "開始"
         case .endDate: return "終了"
         case .location: return "場所"
-        case .memo: return "作業メモ"
-        }
-    }
-}
-
-enum RecordSectionType: CaseIterable {
-    case working, congestion
-
-    var title: String {
-        switch self {
-        case .working: return "作業内容"
         case .congestion: return "混雑状況"
+        case .memo: return "作業メモ"
         }
     }
 }
