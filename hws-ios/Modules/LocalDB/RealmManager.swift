@@ -57,3 +57,14 @@ class FavoriteSpace: Object {
 class Equipments: Object {
     @objc dynamic var equipment = ""
 }
+
+// MARK: Record Items
+
+class RecordItems: Object {
+    @objc dynamic var recordId = ""
+    @objc dynamic var startDate = ""
+    @objc dynamic var endDate = ""
+    @objc dynamic var locationName = ""
+    @objc dynamic var congestionName = ""
+    @objc dynamic var memo = ""
+}

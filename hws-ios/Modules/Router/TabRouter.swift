@@ -73,7 +73,7 @@ final class TabRouter: TabRouting, TabBarRouting {
             let controller = FavoriteViewController(viewModel: viewModel)
             favoriteRouter.container.viewControllers = [controller]
         case .record:
-            let controller = RecordListViewController(viewModel: RecordListViewModel(dependency: .default(router: recordRouter)))
+            let controller = RecordListViewController(viewModel: RecordListViewModel(model: RecordListModel(), dependency: .default(router: recordRouter)))
             recordRouter.container.viewControllers = [controller]
         }
     }

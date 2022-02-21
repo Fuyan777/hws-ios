@@ -9,10 +9,11 @@ import UIKit
 
 class RecordTextViewFormTableViewCell: UITableViewCell {
     @IBOutlet var memoTextLabel: PlaceHolderTextView!
+    private var memoText: String = ""
 
     struct Component {
         enum Event {
-            case doneTapped
+            case doneTapped(String)
         }
 
         var memoText: String
@@ -34,8 +35,13 @@ class RecordTextViewFormTableViewCell: UITableViewCell {
     }
 
     @objc private func doneTapped() {
-        component?.event(.doneTapped)
+        component?.event(.doneTapped(memoText))
     }
 }
 
-extension RecordTextViewFormTableViewCell: UITextViewDelegate {}
+extension RecordTextViewFormTableViewCell: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        guard let text = textView.text else { return }
+        memoText = text
+    }
+}

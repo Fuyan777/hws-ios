@@ -21,9 +21,11 @@ class RecordListViewModel: NSObject {
 
     let barButtonItem = PublishRelay<UIBarButtonItem>()
 
+    private let model: RecordListModel
     private let dependency: Dependency
 
-    init(dependency: Dependency) {
+    init(model: RecordListModel, dependency: Dependency) {
+        self.model = model
         self.dependency = dependency
         super.init()
     }

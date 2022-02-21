@@ -43,6 +43,7 @@ final class RecordViewModel: NSObject {
 
     @objc
     func addButtonTapped() {
+        model.addRecordItems()
         dependency.router.pop()
     }
 }
@@ -67,6 +68,7 @@ extension RecordViewModel: UITableViewDataSource {
             ) { event in
                 switch event {
                 case let .doneTapped(selectedItems):
+                    self.model.update(locationName: selectedItems)
                     self.didTapDoneButton.accept(())
                 case .cancelTapped:
                     self.didTapCancelButton.accept(())
@@ -83,6 +85,7 @@ extension RecordViewModel: UITableViewDataSource {
             ) { event in
                 switch event {
                 case let .doneTapped(selectedItems):
+                    self.model.update(congestionName: selectedItems)
                     self.didTapDoneButton.accept(())
                 case .cancelTapped:
                     self.didTapCancelButton.accept(())
@@ -94,7 +97,8 @@ extension RecordViewModel: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(for: indexPath) as RecordTextViewFormTableViewCell
             let component = RecordTextViewFormTableViewCell.Component(memoText: model.cellTypes[indexPath.row].title) { event in
                 switch event {
-                case .doneTapped:
+                case let .doneTapped(text):
+                    self.model.update(memo: text)
                     self.didTapDoneButton.accept(())
                 }
             }
