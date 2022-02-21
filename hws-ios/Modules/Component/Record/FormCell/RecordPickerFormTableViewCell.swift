@@ -21,7 +21,6 @@ class RecordPickerFormTableViewCell: UITableViewCell {
 
         var title: String
         var list: [String]
-        var viewWidth: CGFloat
         var event: (Event) -> Void
     }
 

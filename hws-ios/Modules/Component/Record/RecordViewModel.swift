@@ -79,7 +79,7 @@ extension RecordViewModel: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(for: indexPath) as RecordPickerFormTableViewCell
             let component = RecordPickerFormTableViewCell.Component(
                 title: model.cellTypes[indexPath.row].title,
-                list: ["該当なし", "orange", "mouth", "america"], viewWidth: 300
+                list: ["該当なし", "orange", "mouth", "america"]
             ) { event in
                 switch event {
                 case let .doneTapped(selectedItems):
@@ -95,8 +95,7 @@ extension RecordViewModel: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(for: indexPath) as RecordPickerFormTableViewCell
             let component = RecordPickerFormTableViewCell.Component(
                 title: model.cellTypes[indexPath.row].title,
-                list: ["快適", "普通", "混雑"],
-                viewWidth: 300
+                list: ["快適", "普通", "混雑"]
             ) { event in
                 switch event {
                 case let .doneTapped(selectedItems):

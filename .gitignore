@@ -152,3 +152,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 hws-ios/Application/Endpoint.swift
+hws-ios/schema.json
