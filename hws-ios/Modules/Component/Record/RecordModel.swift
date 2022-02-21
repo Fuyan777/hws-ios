@@ -23,11 +23,11 @@ class RecordModel {
         realmManager.add(object: item)
     }
 
-    func update(startDate: String) {
+    func update(startDate: Date) {
         recordItem.startDate = startDate
     }
 
-    func update(endDate: String) {
+    func update(endDate: Date) {
         recordItem.endDate = endDate
     }
 

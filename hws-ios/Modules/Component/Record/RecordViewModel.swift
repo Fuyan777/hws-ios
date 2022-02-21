@@ -55,9 +55,24 @@ extension RecordViewModel: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch model.cellTypes[indexPath.row] {
-        case .startDate, .endDate:
+        case .startDate:
             let cell = tableView.dequeueReusableCell(for: indexPath) as RecordFormTableViewCell
-            let component = RecordFormTableViewCell.Component(title: model.cellTypes[indexPath.row].title)
+            let component = RecordFormTableViewCell.Component(title: model.cellTypes[indexPath.row].title) { event in
+                switch event {
+                case let .selectedDate(date):
+                    self.model.update(startDate: date)
+                }
+            }
+            cell.configure(component: component)
+            return cell
+        case .endDate:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as RecordFormTableViewCell
+            let component = RecordFormTableViewCell.Component(title: model.cellTypes[indexPath.row].title) { event in
+                switch event {
+                case let .selectedDate(date):
+                    self.model.update(endDate: date)
+                }
+            }
             cell.configure(component: component)
             return cell
         case .location:

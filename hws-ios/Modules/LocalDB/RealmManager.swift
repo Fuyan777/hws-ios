@@ -62,8 +62,8 @@ class Equipments: Object {
 
 class RecordItems: Object {
     @objc dynamic var recordId = ""
-    @objc dynamic var startDate = ""
-    @objc dynamic var endDate = ""
+    @objc dynamic var startDate = Date()
+    @objc dynamic var endDate = Date()
     @objc dynamic var locationName = ""
     @objc dynamic var congestionName = ""
     @objc dynamic var memo = ""
