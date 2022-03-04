@@ -6,11 +6,19 @@
 //
 
 import Foundation
+import RxRelay
+import RxSwift
 
 class RecordListModel {
+    let recordItem = BehaviorRelay<[RecordItems]>(value: [])
     var localdata = RealmManager()
-    var dataCount: Int { localdata.count(type: RecordItems.self) }
-    var recordItems: [RecordItems] = []
+    var recordItems: [RecordItems] {
+        var tmpArray: [RecordItems] = []
+        localdata.findAll(type: RecordItems.self).forEach {
+            tmpArray.append($0)
+        }
+        return tmpArray
+    }
 
     var startDate: [String] {
         convertStartDateToString()
@@ -20,14 +28,7 @@ class RecordListModel {
         convertEndDateToString()
     }
 
-    init() {
-        // TODO: のちほど削除
-        print(localdata.findAll(type: RecordItems.self))
-
-        localdata.findAll(type: RecordItems.self).forEach {
-            recordItems.append($0)
-        }
-    }
+    init() {}
 
     private func convertStartDateToString() -> [String] {
         var tmpArray: [String] = []
@@ -67,6 +68,5 @@ class RecordListModel {
 
     func delete(index: Int) {
         localdata.delete(recordId: recordItems[index].recordId)
-        recordItems.remove(at: index)
     }
 }

@@ -50,7 +50,7 @@ final class NavigationRouter: NavigationRouting {
         let router = NavigationRouter(tabRouter: tabRouter)
         let viewModel = RecordViewModel(
             model: RecordModel(),
-            dependency: .default(router: self),
+            dependency: .default(router: router),
             delegate: delegate
         )
         let controller = RecordViewController(viewModel: viewModel)
