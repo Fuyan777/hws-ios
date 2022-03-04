@@ -60,6 +60,15 @@ class Equipments: Object {
 
 // MARK: Record Items
 
+extension RealmManager {
+    func delete(recordId: String) {
+        try! realm.write {
+            let object = realm.objects(RecordItems.self).filter("recordId == %@", recordId)
+            realm.delete(object)
+        }
+    }
+}
+
 class RecordItems: Object {
     @objc dynamic var recordId = ""
     @objc dynamic var startDate = Date()

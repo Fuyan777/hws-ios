@@ -23,7 +23,6 @@ class RecordListModel {
     init() {
         // TODO: のちほど削除
         print(localdata.findAll(type: RecordItems.self))
-        print(recordItems.count)
 
         localdata.findAll(type: RecordItems.self).forEach {
             recordItems.append($0)
@@ -66,7 +65,8 @@ class RecordListModel {
         }
     }
 
-    func removeRecordItems(index: Int) {
+    func delete(index: Int) {
+        localdata.delete(recordId: recordItems[index].recordId)
         recordItems.remove(at: index)
     }
 }

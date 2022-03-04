@@ -14,7 +14,7 @@ class RecordModel {
 
     func addRecordItems() {
         let item = RecordItems()
-        item.recordId = "1"
+        item.recordId = UUID().uuidString
         item.startDate = recordItem.startDate
         item.endDate = recordItem.endDate
         item.congestionName = recordItem.congestionName

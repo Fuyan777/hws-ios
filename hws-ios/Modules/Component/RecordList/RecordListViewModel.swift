@@ -69,7 +69,7 @@ extension RecordListViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
 
-        model.removeRecordItems(index: indexPath.row)
+        model.delete(index: indexPath.row)
         deleteIndexPath.accept(indexPath)
     }
 }
