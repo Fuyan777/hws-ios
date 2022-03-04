@@ -46,13 +46,16 @@ final class NavigationRouter: NavigationRouting {
         container.pushViewController(controller, animated: true)
     }
 
-    func pushRecord() {
+    func presentRecord(delegate: RecordListUpdateDelegate?) {
+        let router = NavigationRouter(tabRouter: tabRouter)
         let viewModel = RecordViewModel(
             model: RecordModel(),
-            dependency: .default(router: self)
+            dependency: .default(router: self),
+            delegate: delegate
         )
         let controller = RecordViewController(viewModel: viewModel)
-        container.pushViewController(controller, animated: true)
+        router.container.viewControllers = [controller]
+        container.present(router.container, animated: true)
     }
 
     func presentMap() {

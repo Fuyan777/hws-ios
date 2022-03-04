@@ -20,14 +20,16 @@ final class RecordViewModel: NSObject {
 
     private let model: RecordModel
     private let dependency: Dependency
+    weak var delegate: RecordListUpdateDelegate?
 
     let didTapDoneButton = PublishRelay<Void>()
     let didTapCancelButton = PublishRelay<Void>()
     let barButtonItem = PublishRelay<UIBarButtonItem>()
 
-    init(model: RecordModel, dependency: Dependency) {
+    init(model: RecordModel, dependency: Dependency, delegate: RecordListUpdateDelegate?) {
         self.model = model
         self.dependency = dependency
+        self.delegate = delegate
     }
 
     func setBarButtonItem() {
@@ -44,7 +46,9 @@ final class RecordViewModel: NSObject {
     @objc
     func addButtonTapped() {
         model.addRecordItems()
-        dependency.router.pop()
+        dependency.router.dismiss {
+            self.delegate?.updateList()
+        }
     }
 }
 
@@ -123,3 +127,7 @@ extension RecordViewModel: UITableViewDataSource {
 }
 
 extension RecordViewModel: UITableViewDelegate {}
+
+protocol RecordListUpdateDelegate: AnyObject {
+    func updateList()
+}

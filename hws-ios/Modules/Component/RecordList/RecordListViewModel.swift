@@ -21,6 +21,7 @@ class RecordListViewModel: NSObject {
 
     let barButtonItem = PublishRelay<UIBarButtonItem>()
     let deleteIndexPath = PublishRelay<IndexPath>()
+    let reloadData = PublishRelay<Void>()
 
     private let model: RecordListModel
     private let dependency: Dependency
@@ -44,7 +45,7 @@ class RecordListViewModel: NSObject {
 
     @objc
     func addButtonTapped() {
-        dependency.router.pushRecord()
+        dependency.router.presentRecord(delegate: self)
     }
 }
 
@@ -71,5 +72,11 @@ extension RecordListViewModel: UITableViewDelegate {
 
         model.delete(index: indexPath.row)
         deleteIndexPath.accept(indexPath)
+    }
+}
+
+extension RecordListViewModel: RecordListUpdateDelegate {
+    func updateList() {
+        reloadData.accept(())
     }
 }

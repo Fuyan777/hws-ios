@@ -8,6 +8,6 @@
 import Foundation
 
 protocol RecordRouting: AnyObject {
-    func pushRecord()
-    func pop()
+    func presentRecord(delegate: RecordListUpdateDelegate?)
+    func dismiss(completion: (() -> Void)?)
 }

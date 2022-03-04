@@ -54,5 +54,9 @@ final class RecordListViewController: UIViewController {
             self?.tableView.deleteRows(at: [index], with: .automatic)
             self?.tableView.reloadData()
         }).disposed(by: disposeBag)
+
+        viewModel.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
     }
 }
