@@ -20,6 +20,7 @@ class RecordListViewModel: NSObject {
     }
 
     let barButtonItem = PublishRelay<UIBarButtonItem>()
+    let deleteIndexPath = PublishRelay<IndexPath>()
 
     private let model: RecordListModel
     private let dependency: Dependency
@@ -49,19 +50,26 @@ class RecordListViewModel: NSObject {
 
 extension RecordListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        model.recordItems.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as RecordListTableViewCell
         let component = RecordListTableViewCell.Component(
-            title: "函館 つたや",
-            date: "2021年4月21日",
-            imageType: .comfortable
+            title: model.recordItems[indexPath.row].locationName,
+            date: model.startDate[indexPath.row],
+            imageType: model.convertStringToImageType(congestionName: model.recordItems[indexPath.row].congestionName)
         )
         cell.configure(component: component)
         return cell
     }
 }
 
-extension RecordListViewModel: UITableViewDelegate {}
+extension RecordListViewModel: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+
+        model.removeRecordItems(index: indexPath.row)
+        deleteIndexPath.accept(indexPath)
+    }
+}

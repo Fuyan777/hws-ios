@@ -12,21 +12,6 @@ class RecordListTableViewCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var congestionImageView: UIImageView!
 
-    enum ImageType {
-        case comfortable, normal, congestion
-
-        var image: UIImage {
-            switch self {
-            case .comfortable:
-                return Asset.icComfortable.image
-            case .normal:
-                return Asset.icNormal.image
-            case .congestion:
-                return Asset.icCongestion.image
-            }
-        }
-    }
-
     struct Component {
         var title: String
         var date: String
@@ -40,5 +25,20 @@ class RecordListTableViewCell: UITableViewCell {
         titleLabel.text = component.title
         dateLabel.text = "作業日：" + component.date
         congestionImageView.image = component.imageType.image
+    }
+}
+
+enum ImageType {
+    case comfortable, normal, congestion
+
+    var image: UIImage {
+        switch self {
+        case .comfortable:
+            return Asset.icComfortable.image
+        case .normal:
+            return Asset.icNormal.image
+        case .congestion:
+            return Asset.icCongestion.image
+        }
     }
 }

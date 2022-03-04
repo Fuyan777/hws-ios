@@ -37,6 +37,7 @@ final class RecordListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "作業記録"
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -47,6 +48,11 @@ final class RecordListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.barButtonItem.asObservable().subscribe(onNext: { [weak self] barButton in
             self?.navigationItem.rightBarButtonItem = barButton
+        }).disposed(by: disposeBag)
+
+        viewModel.deleteIndexPath.asObservable().subscribe(onNext: { [weak self] index in
+            self?.tableView.deleteRows(at: [index], with: .automatic)
+            self?.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
 }
