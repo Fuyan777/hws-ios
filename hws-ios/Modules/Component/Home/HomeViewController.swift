@@ -13,8 +13,9 @@ class HomeViewController: UIViewController {
     @IBOutlet var tableView: UITableView! {
         didSet {
             tableView.dataSource = viewModel
+            tableView.delegate = viewModel
             let nibs = [
-                CategoryTableViewCell.self
+                SpaceTableViewCell.self
             ]
             tableView.registerNib(cellTypes: nibs)
         }

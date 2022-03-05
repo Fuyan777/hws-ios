@@ -49,21 +49,19 @@ class HomeViewModel: NSObject {
 
 extension HomeViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        model.tableSection.count
+        model.spacesData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath) as CategoryTableViewCell
-        let component = CategoryTableViewCell.Component(
-            spaceData: model.spacesData,
-            title: model.tableSection[indexPath.row].title
-        ) { event in
-            switch event {
-            case let .moveView(index):
-                self.dependency.router.pushSpaceDetail(spaceData: self.model.spacesData[index])
-            }
-        }
-        cell.setupCell(component: component)
+        let cell = tableView.dequeueReusableCell(for: indexPath) as SpaceTableViewCell
+        let component = SpaceTableViewCell.Component(space: model.spacesData[indexPath.row])
+        cell.setup(component: component)
         return cell
+    }
+}
+
+extension HomeViewModel: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dependency.router.pushSpaceDetail(spaceData: model.spacesData[indexPath.row])
     }
 }
