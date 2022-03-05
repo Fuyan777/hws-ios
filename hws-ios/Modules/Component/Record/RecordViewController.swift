@@ -40,6 +40,7 @@ final class RecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.setBarButtonItem()
+        viewModel.getSpaceName()
     }
 
     private func bindViewModel() {
@@ -53,6 +54,14 @@ final class RecordViewController: UIViewController {
 
         viewModel.barButtonItem.asObservable().subscribe(onNext: { [weak self] barButton in
             self?.navigationItem.rightBarButtonItem = barButton
+        }).disposed(by: disposeBag)
+
+        viewModel.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
+
+        viewModel.alertError.asObservable().subscribe(onNext: { [weak self] error in
+            self?.alertError(error: error)
         }).disposed(by: disposeBag)
     }
 }

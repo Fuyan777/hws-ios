@@ -62,11 +62,11 @@ extension RecordPickerFormTableViewCell: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        self.component?.list.count ?? 0
+        self.component?.list.count ?? 1
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.component?.list[row]
+        self.component?.list[row] ?? "選択なし"
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

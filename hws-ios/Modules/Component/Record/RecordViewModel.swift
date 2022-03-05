@@ -7,6 +7,7 @@
 
 import Foundation
 import RxRelay
+import RxSwift
 import UIKit
 
 final class RecordViewModel: NSObject {
@@ -21,15 +22,20 @@ final class RecordViewModel: NSObject {
     private let model: RecordModel
     private let dependency: Dependency
     weak var delegate: RecordListUpdateDelegate?
+    private let disposeBag = DisposeBag()
 
     let didTapDoneButton = PublishRelay<Void>()
     let didTapCancelButton = PublishRelay<Void>()
     let barButtonItem = PublishRelay<UIBarButtonItem>()
+    let reloadData = PublishRelay<Void>()
+    let alertError = PublishRelay<Error>()
 
     init(model: RecordModel, dependency: Dependency, delegate: RecordListUpdateDelegate?) {
         self.model = model
         self.dependency = dependency
         self.delegate = delegate
+        super.init()
+        bindModel()
     }
 
     func setBarButtonItem() {
@@ -43,12 +49,26 @@ final class RecordViewModel: NSObject {
         barButtonItem.accept(rightButton)
     }
 
+    func getSpaceName() {
+        model.getSpaceName()
+    }
+
     @objc
     func addButtonTapped() {
         model.addRecordItems()
         dependency.router.dismiss {
             self.delegate?.updateList()
         }
+    }
+
+    private func bindModel() {
+        model.requestSuccess.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.reloadData.accept(())
+        }).disposed(by: disposeBag)
+
+        model.requestError.asObservable().subscribe(onNext: { [weak self] error in
+            self?.alertError.accept(error)
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -83,7 +103,7 @@ extension RecordViewModel: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(for: indexPath) as RecordPickerFormTableViewCell
             let component = RecordPickerFormTableViewCell.Component(
                 title: model.cellTypes[indexPath.row].title,
-                list: ["該当なし", "orange", "mouth", "america"]
+                list: model.spacesNameArray
             ) { event in
                 switch event {
                 case let .doneTapped(selectedItems):

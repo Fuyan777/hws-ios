@@ -6,11 +6,17 @@
 //
 
 import Foundation
+import RxRelay
+import RxSwift
 
 class RecordModel {
+    let requestSuccess = PublishRelay<Void>()
+    let requestError = PublishRelay<Error>()
+
     let cellTypes = RecordCellType.allCases
     private var realmManager = RealmManager()
     private var recordItem = RecordItems()
+    var spacesNameArray: [String] = []
 
     func addRecordItems() {
         let item = RecordItems()
@@ -41,6 +47,27 @@ class RecordModel {
 
     func update(memo: String) {
         recordItem.memo = memo
+    }
+
+    func getSpaceName() {
+        Network.shared.apollo.fetch(query: GetSpacesQuery()) { result in
+            switch result {
+            case let .success(response):
+                guard let spacesData = response.data?.spaces else { return }
+                self.spacesNameArray = self.transform(from: spacesData)
+                self.requestSuccess.accept(())
+            case let .failure(error):
+                self.requestError.accept(error)
+            }
+        }
+    }
+
+    private func transform(from spaces: [GetSpacesQuery.Data.Space]) -> [String] {
+        var spaceName: [String] = []
+        spaces.forEach { space in
+            spaceName.append(space.name)
+        }
+        return spaceName
     }
 }
 
