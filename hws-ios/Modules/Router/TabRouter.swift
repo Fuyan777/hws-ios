@@ -46,8 +46,8 @@ final class TabRouter: TabRouting, TabBarRouting {
                 )
             case .record:
                 controller.tabBarItem = UITabBarItem(
-                    title: "設定",
-                    image: UIImage(systemName: "gearshape"),
+                    title: "作業記録",
+                    image: UIImage(systemName: "doc.plaintext"),
                     tag: tab.rawValue
                 )
             }
