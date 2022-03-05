@@ -10,18 +10,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="98" id="KGk-i7-Jjw" customClass="RecordFormTableViewCell" customModule="HakoSpace" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="KGk-i7-Jjw" customClass="RecordFormTableViewCell" customModule="HakoSpace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNq-1r-dFf">
-                        <rect key="frame" x="16" y="0.0" width="343" height="48"/>
+                        <rect key="frame" x="16" y="4" width="343" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a31-PE-tqC">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="9Aj-Wb-wSW"/>
                                 </constraints>
@@ -30,19 +30,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="e6V-re-Dd5">
-                                <rect key="frame" x="80" y="0.0" width="263" height="48"/>
+                                <rect key="frame" x="80" y="0.0" width="263" height="44"/>
                             </datePicker>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="48" id="Wip-MP-jJk"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="hNq-1r-dFf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="48P-iQ-0qf"/>
-                    <constraint firstItem="hNq-1r-dFf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="R6U-QG-tj0"/>
+                    <constraint firstItem="hNq-1r-dFf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="R6U-QG-tj0"/>
                     <constraint firstAttribute="trailing" secondItem="hNq-1r-dFf" secondAttribute="trailing" constant="16" id="iJZ-JS-E5N"/>
-                    <constraint firstAttribute="bottom" secondItem="hNq-1r-dFf" secondAttribute="bottom" id="lhZ-EN-JMt"/>
+                    <constraint firstAttribute="bottom" secondItem="hNq-1r-dFf" secondAttribute="bottom" constant="4" id="lhZ-EN-JMt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -50,7 +47,7 @@
                 <outlet property="datePicker" destination="e6V-re-Dd5" id="CXN-sO-aIW"/>
                 <outlet property="titleLabel" destination="a31-PE-tqC" id="ewy-Y0-kEe"/>
             </connections>
-            <point key="canvasLocation" x="136.95652173913044" y="127.90178571428571"/>
+            <point key="canvasLocation" x="136.95652173913044" y="129.24107142857142"/>
         </tableViewCell>
     </objects>
 </document>
