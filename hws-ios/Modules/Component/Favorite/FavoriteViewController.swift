@@ -16,7 +16,7 @@ class FavoriteViewController: UIViewController {
                 FavoriteSpaceCollectionViewCell.self
             ]
             collectionView.registerNib(cellTypes: nibs)
-            collectionView.contentInset = UIEdgeInsets(top: 8, left: 6, bottom: 6, right: 8)
+            collectionView.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         }
     }
 
@@ -49,9 +49,8 @@ extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let horizontalSpace: CGFloat = 12.0
-        let cellSize = view.bounds.width / 2.0 - horizontalSpace
-        return CGSize(width: cellSize, height: 400.0)
+        let cellSize = view.bounds.width - 8
+        return CGSize(width: cellSize, height: 200.0)
     }
 }
 

@@ -9,13 +9,22 @@ import UIKit
 
 class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
     @IBOutlet var baseView: UIView! {
-        didSet { baseView.maskConer(corner: 8) }
+        didSet {
+            baseView.maskConer()
+            baseView.layer.borderColor = UIColor.gray.cgColor
+            baseView.layer.borderWidth = 0.5
+            //            baseView.maskShadow()
+        }
     }
 
-    @IBOutlet var spaceImageView: UIImageView!
+    @IBOutlet var spaceImageView: UIImageView! {
+        didSet {
+            spaceImageView.layer.cornerRadius = 4
+            spaceImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        }
+    }
+
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var usageTimeLabel: UILabel!
-    @IBOutlet var addressLabel: UILabel!
     @IBOutlet var equipmentCollectionView: UICollectionView! {
         didSet {
             equipmentCollectionView.dataSource = self
@@ -28,12 +37,6 @@ class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    @IBOutlet var moveButton: UIButton! {
-        didSet {
-            moveButton.maskConer()
-        }
-    }
-
     struct Component {
         var favoriteSpace: Space
     }
@@ -43,11 +46,9 @@ class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
     func setup(component: Component) {
         self.component = component
         titleLabel.text = component.favoriteSpace.name
-        addressLabel.text = component.favoriteSpace.address
 
         //        TODO: バックエンドの準備が出来次第
         //        spaceImageView.setImage(urlString: component.imageUrlString)
-        usageTimeLabel.isHidden = true
     }
 }
 
@@ -73,6 +74,6 @@ extension FavoriteSpaceCollectionViewCell: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        CGSize(width: 30, height: 30)
+        CGSize(width: 40, height: 40)
     }
 }
