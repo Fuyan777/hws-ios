@@ -12,13 +12,19 @@ import RxSwift
 class RecordModel {
     let requestSuccess = PublishRelay<Void>()
     let requestError = PublishRelay<Error>()
+    let validationError = PublishRelay<Void>()
 
     let cellTypes = RecordCellType.allCases
     private var realmManager = RealmManager()
     private var recordItem = RecordItems()
     var spacesNameArray: [String] = []
 
-    func addRecordItems() {
+    func addRecordItemsWithValidation() -> Bool {
+        if recordItem.congestionName == "" || recordItem.locationName == "" {
+            validationError.accept(())
+            return false
+        }
+
         let item = RecordItems()
         item.recordId = UUID().uuidString
         item.startDate = recordItem.startDate
@@ -27,6 +33,7 @@ class RecordModel {
         item.locationName = recordItem.locationName
         item.memo = recordItem.memo
         realmManager.add(object: item)
+        return true
     }
 
     func update(startDate: Date) {

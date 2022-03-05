@@ -29,6 +29,7 @@ final class RecordViewModel: NSObject {
     let barButtonItem = PublishRelay<UIBarButtonItem>()
     let reloadData = PublishRelay<Void>()
     let alertError = PublishRelay<Error>()
+    let alertValidationError = PublishRelay<Void>()
 
     init(model: RecordModel, dependency: Dependency, delegate: RecordListUpdateDelegate?) {
         self.model = model
@@ -55,7 +56,7 @@ final class RecordViewModel: NSObject {
 
     @objc
     func addButtonTapped() {
-        model.addRecordItems()
+        guard model.addRecordItemsWithValidation() else { return }
         dependency.router.dismiss {
             self.delegate?.updateList()
         }
@@ -68,6 +69,10 @@ final class RecordViewModel: NSObject {
 
         model.requestError.asObservable().subscribe(onNext: { [weak self] error in
             self?.alertError.accept(error)
+        }).disposed(by: disposeBag)
+
+        model.validationError.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.alertValidationError.accept(())
         }).disposed(by: disposeBag)
     }
 }

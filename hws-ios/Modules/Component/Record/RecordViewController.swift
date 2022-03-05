@@ -63,5 +63,9 @@ final class RecordViewController: UIViewController {
         viewModel.alertError.asObservable().subscribe(onNext: { [weak self] error in
             self?.alertError(error: error)
         }).disposed(by: disposeBag)
+
+        viewModel.alertValidationError.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.alertMessage("項目を全て記入してください")
+        }).disposed(by: disposeBag)
     }
 }
