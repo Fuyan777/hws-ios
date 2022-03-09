@@ -32,6 +32,19 @@ class SpaceDetailViewModel: NSObject {
         bindModel()
     }
 
+    func openGooleMapsRoute() {
+        let pinName = model.spacesDetail.name
+        var urlString = ""
+
+        if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+            urlString = "comgooglemaps://?daddr=\(pinName)&directionsmode=driving"
+        }
+        let encodeUrlString: String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        if let url = URL(string: encodeUrlString) {
+            UIApplication.shared.open(url)
+        }
+    }
+
     private func bindModel() {
         model.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
             self?.reloadData.accept(())

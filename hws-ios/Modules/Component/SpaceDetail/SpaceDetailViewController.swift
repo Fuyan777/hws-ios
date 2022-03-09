@@ -22,7 +22,13 @@ class SpaceDetailViewController: UIViewController {
         }
     }
 
-    @IBOutlet var goSpaceButton: UIButton!
+    @IBOutlet var goSpaceButton: UIButton! {
+        didSet { goSpaceButton.addTarget(self, action: #selector(didTapGoSpaceButton), for: .touchUpInside) }
+    }
+
+    @objc func didTapGoSpaceButton() {
+        viewModel.openGooleMapsRoute()
+    }
 
     private let viewModel: SpaceDetailViewModel
     private let disposeBag = DisposeBag()
