@@ -53,6 +53,10 @@ class SpaceDetailViewController: UIViewController {
         viewModel.reloadData.asObservable().subscribe(onNext: { [weak self] _ in
             self?.tableView.reloadData()
         }).disposed(by: disposeBag)
+
+        viewModel.confirmAlert.asObservable().subscribe(onNext: { [weak self] alert in
+            self?.present(alert, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
     }
 }
 

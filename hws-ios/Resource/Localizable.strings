@@ -9,3 +9,7 @@
 "navigation.homeTitle" = "Hakoスペース";
 "navigation.favoriteTitle" = "お気に入り";
 "navigation.settingTitle" = "設定";
+
+// Alert
+"alert.congestionInfoTitle" = "混雑状況の確認方法";
+"alert.congestionInfoMessage" = "Googleマップのアプリで表示されるお店の詳細を開き、下にスクロールすると「混雑する時間帯」を確認できます。";

@@ -11,6 +11,13 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
 
+  internal enum Alert {
+    /// Googleマップのアプリで表示されるお店の詳細を開き、下にスクロールすると「混雑する時間帯」を確認できます。
+    internal static let congestionInfoMessage = L10n.tr("Localizable", "alert.congestionInfoMessage")
+    /// 混雑状況の確認方法
+    internal static let congestionInfoTitle = L10n.tr("Localizable", "alert.congestionInfoTitle")
+  }
+
   internal enum Navigation {
     /// お気に入り
     internal static let favoriteTitle = L10n.tr("Localizable", "navigation.favoriteTitle")

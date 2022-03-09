@@ -9,12 +9,6 @@ import UIKit
 
 class SpaceDetailHeaderTableViewCell: UITableViewCell {
     @IBOutlet var spaceTitleLabel: UILabel!
-    @IBOutlet var addressButton: UIButton! {
-        didSet {
-            addressButton.addTarget(self, action: #selector(moveMap), for: .touchUpInside)
-            addressButton.setTitleColor(.gray, for: .normal)
-        }
-    }
 
     @IBOutlet var favoriteButton: UIButton! {
         didSet {
@@ -22,15 +16,21 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
         }
     }
 
-    @IBOutlet var confusionButton: UIButton! {
+    @IBOutlet var congestionButton: UIButton! {
         didSet {
-            confusionButton.addTarget(self, action: #selector(moveGoogleMaps), for: .touchUpInside)
+            congestionButton.addTarget(self, action: #selector(moveGoogleMaps), for: .touchUpInside)
+        }
+    }
+
+    @IBOutlet var congestionInfoButton: UIButton! {
+        didSet {
+            congestionInfoButton.addTarget(self, action: #selector(openAlertCongestionInfo), for: .touchUpInside)
         }
     }
 
     struct Component {
         enum Event {
-            case moveMap, tapFavorite, moveGoogleMaps
+            case moveMap, tapFavorite, moveGoogleMaps, congestionInfo
         }
 
         var title: String
@@ -40,6 +40,7 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
         func moveMap() { event(.moveMap) }
         func moveGoogleMaps() { event(.moveGoogleMaps) }
         func tapFavorite() { event(.tapFavorite) }
+        func openAlertCongestionInfo() { event(.congestionInfo) }
     }
 
     private var component: Component?
@@ -47,16 +48,10 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
     func setup(component: Component) {
         self.component = component
         spaceTitleLabel.text = component.title
-        addressButton.setTitle(component.address, for: .normal)
 
         component.isFavorite
             ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-    }
-
-    @objc
-    private func moveMap() {
-        component?.moveMap()
     }
 
     @objc
@@ -71,5 +66,10 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
     @objc
     private func moveGoogleMaps() {
         component?.moveGoogleMaps()
+    }
+
+    @objc
+    private func openAlertCongestionInfo() {
+        component?.openAlertCongestionInfo()
     }
 }

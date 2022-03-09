@@ -22,6 +22,7 @@ class SpaceDetailViewModel: NSObject {
     private let disposeBag = DisposeBag()
     let model: SpaceDetailModel
     let reloadData = PublishRelay<Void>()
+    let confirmAlert = PublishRelay<UIAlertController>()
 
     let tableSection: [TableSection] = TableSection.allCases
 
@@ -77,6 +78,15 @@ extension SpaceDetailViewModel: UITableViewDataSource {
                     self.model.isFavorite ? self.model.deleteFavorite() : self.model.addFavorite()
                 case .moveGoogleMaps:
                     self.openGooleMaps()
+                case .congestionInfo:
+                    let alertAction: [UIAlertAction] = [UIAlertAction(title: "OK", style: .default)]
+                    let alert = UIAlertController.confirm(
+                        title: L10n.Alert.congestionInfoTitle,
+                        message: L10n.Alert.congestionInfoMessage,
+                        type: .alert, actions: alertAction,
+                        hasCancel: false
+                    )
+                    self.confirmAlert.accept(alert)
                 }
             }
             cell.setup(component: component)
