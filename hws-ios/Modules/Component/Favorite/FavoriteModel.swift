@@ -23,7 +23,6 @@ class FavoriteModel {
 
     private func transform(from favoriteSpaces: [FavoriteSpace]) -> [Space] {
         var spaceEntity: [Space] = []
-        print(favoriteSpaces[0].imageUrlString)
 
         favoriteSpaces.forEach { space in
             spaceEntity.append(
