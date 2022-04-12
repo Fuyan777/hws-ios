@@ -2,11 +2,11 @@ PODS:
   - Apollo (0.45.0):
     - Apollo/Core (= 0.45.0)
   - Apollo/Core (0.45.0)
-  - Realm (10.10.0):
-    - Realm/Headers (= 10.10.0)
-  - Realm/Headers (10.10.0)
-  - RealmSwift (10.10.0):
-    - Realm (= 10.10.0)
+  - Realm (10.25.0):
+    - Realm/Headers (= 10.25.0)
+  - Realm/Headers (10.25.0)
+  - RealmSwift (10.25.0):
+    - Realm (= 10.25.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -23,8 +23,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Apollo: 241254e8b26f49dc180e3be848f0b3fc5699e6f4
-  Realm: f501df41a4222c67850c77cf135d472192ecf294
-  RealmSwift: c69aadfc7db0d60075178d037c2f34ada73d5201
+  Realm: 22a82aaa0e73f3483e3a6df32549c4c5cd34aa63
+  RealmSwift: c2a635212400923edd3f828b8a37d55d3eb31863
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 4c384f6e78e34f34a9b352daa7ce42efd5c45ad6
