@@ -105,6 +105,7 @@
                 <outlet property="congestionButton" destination="l8S-H2-0xM" id="XRS-d6-e2g"/>
                 <outlet property="congestionInfoButton" destination="Tae-2p-eyc" id="hTP-qP-xgl"/>
                 <outlet property="favoriteButton" destination="wV2-m5-CTy" id="svK-2X-roS"/>
+                <outlet property="spaceImageView" destination="4JQ-T8-hcO" id="RNB-hv-0Nf"/>
                 <outlet property="spaceTitleLabel" destination="yzY-7V-K4r" id="qjf-gU-Xp2"/>
             </connections>
             <point key="canvasLocation" x="90.579710144927546" y="245.42410714285714"/>
@@ -112,7 +113,7 @@
     </objects>
     <resources>
         <image name="dammy" width="161" height="133"/>
-        <image name="heart" catalog="system" width="32" height="32"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

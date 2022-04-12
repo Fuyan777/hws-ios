@@ -21,10 +21,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3h-5a-oCn">
                         <rect key="frame" x="16" y="8" width="343" height="284"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F2q-E5-lHd">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F2q-E5-lHd">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="284"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PaC-Jo-9ub">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dammy" translatesAutoresizingMaskIntoConstraints="NO" id="PaC-Jo-9ub">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="234"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="234" id="4tZ-Ds-2cF"/>
@@ -33,7 +33,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiD-dL-mcj">
                                         <rect key="frame" x="16" y="234" width="311" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="BW9-pn-E17"/>
+                                            <constraint firstAttribute="height" constant="50" id="eTz-Ig-PE4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -43,7 +43,6 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PaC-Jo-9ub" secondAttribute="trailing" id="IoF-w9-YWi"/>
                                     <constraint firstItem="PaC-Jo-9ub" firstAttribute="leading" secondItem="F2q-E5-lHd" secondAttribute="leading" id="RSb-gd-J3D"/>
-                                    <constraint firstAttribute="trailing" secondItem="QiD-dL-mcj" secondAttribute="trailing" constant="16" id="uai-y4-56i"/>
                                     <constraint firstItem="QiD-dL-mcj" firstAttribute="leading" secondItem="F2q-E5-lHd" secondAttribute="leading" constant="16" id="yAv-Qk-Kho"/>
                                 </constraints>
                             </stackView>
@@ -76,6 +75,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="dammy" width="161" height="133"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

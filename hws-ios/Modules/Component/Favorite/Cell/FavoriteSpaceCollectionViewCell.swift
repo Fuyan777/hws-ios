@@ -46,9 +46,7 @@ class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
     func setup(component: Component) {
         self.component = component
         titleLabel.text = component.favoriteSpace.name
-
-        //        TODO: バックエンドの準備が出来次第
-        //        spaceImageView.setImage(urlString: component.imageUrlString)
+//        spaceImageView.setImage(urlString: component.imageUrlString)
     }
 }
 

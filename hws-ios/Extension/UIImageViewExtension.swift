@@ -11,7 +11,10 @@ import UIKit
 extension UIImageView {
     func setImage(urlString: String, completion: ((UIImage?) -> Void)? = nil) {
         if let url = URL(string: urlString) {
-            sd_setImage(with: url) { webImage, error, _, _ in
+            sd_setImage(
+                with: url,
+                placeholderImage: Asset.dammy.image
+            ) { webImage, error, _, _ in
                 if error != nil {
                     completion?(self.image)
                     return

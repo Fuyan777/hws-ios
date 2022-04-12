@@ -69,7 +69,8 @@ extension SpaceDetailViewModel: UITableViewDataSource {
             let component = SpaceDetailHeaderTableViewCell.Component(
                 title: model.spacesDetail.name,
                 address: model.spacesDetail.address,
-                isFavorite: model.isFavorite
+                isFavorite: model.isFavorite,
+                imageUrlString: model.spacesDetail.image
             ) { event in
                 switch event {
                 case .moveMap:

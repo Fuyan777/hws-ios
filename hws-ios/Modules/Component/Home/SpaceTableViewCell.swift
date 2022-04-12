@@ -33,6 +33,6 @@ class SpaceTableViewCell: UITableViewCell {
     func setup(component: Component) {
         self.component = component
         spaceLabel.text = component.space.name
-        spaceImageView.image = Asset.dammy.image
+        spaceImageView.setImage(urlString: component.space.image)
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 class SpaceDetailHeaderTableViewCell: UITableViewCell {
+    @IBOutlet var spaceImageView: UIImageView!
     @IBOutlet var spaceTitleLabel: UILabel!
 
     @IBOutlet var favoriteButton: UIButton! {
@@ -36,6 +37,7 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
         var title: String
         var address: String
         var isFavorite: Bool
+        var imageUrlString: String
         var event: (Event) -> Void
         func moveMap() { event(.moveMap) }
         func moveGoogleMaps() { event(.moveGoogleMaps) }
@@ -52,6 +54,8 @@ class SpaceDetailHeaderTableViewCell: UITableViewCell {
         component.isFavorite
             ? favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             : favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+
+        spaceImageView.setImage(urlString: component.imageUrlString)
     }
 
     @objc
