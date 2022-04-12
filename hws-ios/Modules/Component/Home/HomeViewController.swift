@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = L10n.Navigation.homeTitle
+        viewModel.setBarButtonItem()
     }
 
     private func bindViewModel() {
@@ -52,6 +53,10 @@ class HomeViewController: UIViewController {
 
         viewModel.alertError.asObservable().subscribe(onNext: { [weak self] error in
             self?.alertError(error: error)
+        }).disposed(by: disposeBag)
+
+        viewModel.barButtonItem.asObservable().subscribe(onNext: { [weak self] barButton in
+            self?.navigationItem.rightBarButtonItem = barButton
         }).disposed(by: disposeBag)
     }
 }

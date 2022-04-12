@@ -20,6 +20,7 @@ class HomeViewModel: NSObject {
 
     let reloadData = PublishRelay<Void>()
     let alertError = PublishRelay<Error>()
+    let barButtonItem = PublishRelay<UIBarButtonItem>()
 
     private let dependency: Dependency
     private let model: HomeModel
@@ -44,6 +45,22 @@ class HomeViewModel: NSObject {
         model.requestError.asObservable().subscribe(onNext: { [weak self] error in
             self?.alertError.accept(error)
         }).disposed(by: disposeBag)
+    }
+
+    func setBarButtonItem() {
+        let rightButton = UIBarButtonItem(
+            image: UIImage(systemName: "gearshape"),
+            style: .plain,
+            target: self,
+            action: #selector(settingButtonTapped)
+        )
+        rightButton.tintColor = Asset.accentColor.color
+        barButtonItem.accept(rightButton)
+    }
+
+    @objc
+    func settingButtonTapped() {
+        dependency.router.pushSetting()
     }
 }
 
