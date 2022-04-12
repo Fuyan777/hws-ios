@@ -13,7 +13,6 @@ class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
             baseView.maskConer()
             baseView.layer.borderColor = UIColor.gray.cgColor
             baseView.layer.borderWidth = 0.5
-            //            baseView.maskShadow()
         }
     }
 
@@ -46,7 +45,8 @@ class FavoriteSpaceCollectionViewCell: UICollectionViewCell {
     func setup(component: Component) {
         self.component = component
         titleLabel.text = component.favoriteSpace.name
-//        spaceImageView.setImage(urlString: component.imageUrlString)
+        spaceImageView.setImage(urlString: component.favoriteSpace.image)
+        print(component.favoriteSpace.image)
     }
 }
 

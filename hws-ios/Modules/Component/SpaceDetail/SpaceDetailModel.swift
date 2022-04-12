@@ -42,6 +42,7 @@ class SpaceDetailModel {
         space.spaceId = spacesDetail.id
         space.spaceName = spacesDetail.name
         space.spaceDescription = spacesDetail.description
+        space.imageUrlString = spacesDetail.image
         space.address = spacesDetail.address
         space.longitude = spacesDetail.longitude
         space.latitude = spacesDetail.latitude

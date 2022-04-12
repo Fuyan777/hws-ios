@@ -24,7 +24,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZR-NC-tbN">
                                 <rect key="frame" x="0.0" y="0.0" width="359" height="196"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dammy" translatesAutoresizingMaskIntoConstraints="NO" id="CKC-L1-Cfw">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CKC-L1-Cfw">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="196"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="CKC-L1-Cfw" secondAttribute="height" multiplier="1:1" id="E7n-U2-ZN7"/>
@@ -97,7 +97,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="dammy" width="161" height="133"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

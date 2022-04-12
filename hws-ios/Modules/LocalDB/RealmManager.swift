@@ -47,6 +47,7 @@ class FavoriteSpace: Object {
     @objc dynamic var spaceName = ""
     @objc dynamic var spaceDescription = ""
     @objc dynamic var address = ""
+    @objc dynamic var imageUrlString = ""
     @objc dynamic var longitude = 0.0
     @objc dynamic var latitude = 0.0
     @objc dynamic var area = ""
