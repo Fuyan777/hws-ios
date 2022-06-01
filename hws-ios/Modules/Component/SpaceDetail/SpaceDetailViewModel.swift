@@ -36,10 +36,15 @@ class SpaceDetailViewModel: NSObject {
     func openGooleMapsRoute() {
         let pinName = model.spacesDetail.name
         var urlString = ""
+        let startPinName = "函館市美原"
 
         if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
-            urlString = "comgooglemaps://?daddr=\(pinName)&directionsmode=driving"
+            // saddr=現在地,daddr=目的地
+            urlString = "comgooglemaps://?saddr=\(startPinName)&daddr=\(pinName)&directionsmode=driving"
+        } else {
+            urlString = "https://maps.google.com/maps?saddr=\(startPinName)&daddr=\(pinName)&directionsmode=driving"
         }
+
         let encodeUrlString: String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         if let url = URL(string: encodeUrlString) {
             UIApplication.shared.open(url)
